@@ -1,0 +1,43 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF S_COMPOSE_PM -->
+<form id="postform" method="post" action="{S_POST_ACTION}"{S_FORM_ENCTYPE}>
+<!-- ENDIF -->
+
+<div class="tabs-container">
+    <div class="tabs-list gradient link">
+        <a href="javascript:void(0);" class="link">
+            <!-- BEGIN t_block1 -->
+                <!-- IF t_block1.S_SELECTED -->{t_block1.L_TITLE}<!-- ENDIF -->
+            <!-- END t_block1 -->
+        </a>
+        <ul class="sub sub-nojs">
+            <!-- BEGIN t_block1 -->
+            <li <!-- IF t_block1.S_SELECTED -->class="activetab"<!-- ENDIF -->><a href="{t_block1.U_TITLE}">{t_block1.L_TITLE}</a></li>
+            <!-- END t_block1 -->
+        </ul>
+    </div>
+    
+    <div class="tabs-list gradient link">
+        <a href="javascript:void(0);" class="link">
+            <!-- BEGIN t_block2 -->
+                <!-- IF t_block2.S_SELECTED --><!-- DEFINE $S_FOUND_BLOCK2 = 1 -->{t_block2.L_TITLE}<!-- ENDIF -->
+            <!-- END t_block2 -->
+            <!-- IF not $S_FOUND_BLOCK2 and S_PRIVMSGS -->
+                <!-- BEGIN folder -->
+                    <!-- IF folder.S_CUR_FOLDER -->{folder.FOLDER_NAME}<!-- ENDIF -->
+                <!-- END folder -->
+            <!-- ENDIF -->
+        </a>
+        <ul class="sub sub-nojs">
+            <!-- BEGIN t_block2 -->
+            <li <!-- IF t_block2.S_SELECTED -->class="activetab"<!-- ENDIF -->><a href="{t_block2.U_TITLE}">{t_block2.L_TITLE}</a></li>
+            <!-- END t_block2 -->
+            <!-- IF S_PRIVMSGS and .folder -->
+                <!-- BEGIN folder -->
+                <li><a href="{folder.U_FOLDER}"<!-- IF folder.S_CUR_FOLDER --> class="activetab"<!-- ENDIF -->><!-- IF folder.UNREAD_MESSAGES > 0 -->{folder.FOLDER_NAME} ({folder.UNREAD_MESSAGES})<!-- ELSE -->{folder.FOLDER_NAME}<!-- ENDIF --></a></li>
+                <!-- END folder -->
+            <!-- ENDIF -->
+        </ul>
+    </div>
+</div>

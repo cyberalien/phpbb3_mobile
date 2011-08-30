@@ -1,0 +1,34 @@
+<!-- INCLUDE ucp_header.html -->
+
+<p>{L_UCP_WELCOME}</p>
+
+<!-- IF .topicrow -->
+<h3>{L_IMPORTANT_NEWS}</h3>
+
+<div class="forums">
+    <ul class="topiclist forums">
+	<!-- BEGIN topicrow -->
+		<li class="row link<!-- IF topicrow.S_UNREAD --> row-new<!-- ENDIF -->" onclick="document.location.href='<!-- IF topicrow.S_UNREAD -->{topicrow.U_NEWEST_POST}<!-- ELSE -->{topicrow.U_VIEW_TOPIC}<!-- ENDIF -->';">
+			<p><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
+                <!-- IF topicrow.S_UNREAD --><a href="{topicrow.U_NEWEST_POST}" class="newest">{L_NEW_POST}</a><!-- ENDIF -->
+                <!-- IF topicrow.PAGINATION --><span class="pages">{topicrow.PAGINATION}</span><!-- ENDIF -->
+            </p>
+            <p>{topicrow.LAST_POST_TIME}</p>
+        </li>
+	<!-- END topicrow -->
+	</ul>
+</div>
+<!-- ENDIF -->
+
+	<h3>{L_YOUR_DETAILS}</h3>
+
+	<dl class="details">
+		<dt>{L_JOINED}:</dt> <dd>{JOINED}</dd>
+		<dt>{L_VISITED}:</dt> <dd>{LAST_VISIT_YOU}</dd>
+		<dt>{L_TOTAL_POSTS}:</dt> <dd><!-- IF POSTS_PCT -->{POSTS}<!-- IF S_DISPLAY_SEARCH --> | <strong><a href="{U_SEARCH_USER}">{L_SEARCH_YOUR_POSTS}</a></strong><!-- ENDIF --><br />({POSTS_DAY} / {POSTS_PCT})<!-- ELSE -->{POSTS}<!-- ENDIF --></dd>
+		<!-- IF ACTIVE_FORUM --><dt>{L_ACTIVE_IN_FORUM}:</dt> <dd><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})</dd><!-- ENDIF -->
+		<!-- IF ACTIVE_TOPIC --><dt>{L_ACTIVE_IN_TOPIC}:</dt> <dd><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})</dd><!-- ENDIF -->
+		<!-- IF WARNINGS --><dt>{L_YOUR_WARNINGS}:</dt> <dd class="error">{WARNING_IMG} [{WARNINGS}]</dd><!-- ENDIF -->
+	</dl>
+
+<!-- INCLUDE ucp_footer.html -->

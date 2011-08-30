@@ -1,0 +1,81 @@
+<!-- INCLUDE overall_header.html -->
+
+
+
+<div class="tabs-container">
+    <!-- IF U_MCP -->
+    <div class="tabs-list gradient link">
+        <a href="javascript:void(0);" class="link">{L_MCP}</a>
+        <ul class="sub sub-nojs">
+            <li><a href="{U_MCP}">{L_MCP}</a></li>
+            <!-- IF U_MCP_FORUM --><li><a href="{U_MCP_FORUM}">{L_MODERATE_FORUM}</a></li><!-- ENDIF -->
+            <!-- IF U_MCP_TOPIC --><li><a href="{U_MCP_TOPIC}">{L_MODERATE_TOPIC}</a></li><!-- ENDIF -->
+            <!-- IF U_MCP_POST --><li><a href="{U_MCP_POST}">{L_MODERATE_POST}</a></li><!-- ENDIF -->
+        </ul>
+    </div>
+    <!-- ENDIF -->
+
+    <div class="tabs-list gradient link">
+        <a href="javascript:void(0);" class="link">
+            <!-- BEGIN t_block1 -->
+                <!-- IF t_block1.S_SELECTED -->{t_block1.L_TITLE}<!-- ENDIF -->
+            <!-- END t_block1 -->
+        </a>
+        <ul class="sub sub-nojs">
+            <!-- BEGIN t_block1 -->
+            <li <!-- IF t_block1.S_SELECTED -->class="activetab"<!-- ENDIF -->><a href="{t_block1.U_TITLE}">{t_block1.L_TITLE}</a></li>
+            <!-- END t_block1 -->
+        </ul>
+    </div>
+    
+    <div class="tabs-list gradient link">
+        <a href="javascript:void(0);" class="link">
+			<!-- BEGIN l_block1 -->
+			<!-- IF l_block1.S_SELECTED -->
+				<!-- BEGIN l_block2 -->
+				<!-- IF l_block1.l_block2.S_SELECTED -->
+                    {l_block1.l_block2.L_TITLE}
+				<!-- ENDIF -->
+				<!-- END l_block2 -->
+			<!-- ENDIF -->
+			<!-- END l_block1 -->
+        </a>
+        <ul class="sub sub-nojs">
+			<!-- BEGIN l_block1 -->
+			<!-- IF l_block1.S_SELECTED -->
+				<!-- BEGIN l_block2 -->
+				<!-- IF l_block1.l_block2.S_SELECTED -->
+				<li><a href="{l_block1.l_block2.U_TITLE}">{l_block1.l_block2.L_TITLE}<!-- IF l_block1.l_block2.ADD_ITEM --> ({l_block1.l_block2.ADD_ITEM})<!-- ENDIF --></a></li>
+				<!-- ELSE -->
+				<li><a href="{l_block1.l_block2.U_TITLE}">{l_block1.l_block2.L_TITLE}<!-- IF l_block1.l_block2.ADD_ITEM --> ({l_block1.l_block2.ADD_ITEM})<!-- ENDIF --></a></li>
+				<!-- ENDIF -->
+				<!-- END l_block2 -->
+			<!-- ENDIF -->
+			<!-- END l_block1 -->
+        </ul>
+    </div>
+</div>
+
+<!-- IF MESSAGE -->
+<div class="block">
+    <h2>{L_MESSAGE}</h2>
+    <p class="error">{MESSAGE}</p>
+    <p><!-- BEGIN return_links -->{return_links.MESSAGE_LINK}<br /><br /><!-- END return_links --></p>
+</div>
+<!-- ENDIF -->
+
+		<!-- IF CONFIRM_MESSAGE -->
+			<form id="confirm" method="post" action="{S_CONFIRM_ACTION}"{S_FORM_ENCTYPE}>
+
+			<div class="block">
+				<h2>{L_PLEASE_CONFIRM}</h2>
+				<p>{CONFIRM_MESSAGE}</p>
+			
+				<fieldset class="submit-buttons">
+					{S_HIDDEN_FIELDS}<input class="button1" type="submit" name="submit" value="{L_YES}" />&nbsp; 
+					<input class="button2" type="cancel" value="{L_NO}" />
+				</fieldset>
+			</div>
+
+			</form>
+		<!-- ENDIF -->

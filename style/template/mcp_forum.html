@@ -1,0 +1,60 @@
+<!-- INCLUDE mcp_header.html -->
+
+<!-- DEFINE $CUSTOM_FIELDSET_CLASS = 'forum-selection2' -->
+<!-- INCLUDE jumpbox.html -->
+
+<h2><a href="{U_VIEW_FORUM}">{FORUM_NAME}</a></h2>
+
+<form method="post" id="mcp" action="{S_MCP_ACTION}">
+
+	<!-- IF .topicrow -->
+	<div class="forums">
+	    <p class="header gradient">{L_TOPICS}</p>
+		<ul class="topiclist forums">
+
+		<!-- BEGIN topicrow -->
+		<li class="row">
+		    <p>
+				<!-- IF not S_MERGE_SELECT and not topicrow.S_MOVED_TOPIC --><input type="checkbox" name="topic_id_list[]" value="{topicrow.TOPIC_ID}"<!-- IF topicrow.S_TOPIC_CHECKED --> checked="checked"<!-- ENDIF --> /><!-- ENDIF -->
+                <a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
+                <!-- IF topicrow.PAGINATION --><span class="pages">{topicrow.PAGINATION}</span><!-- ENDIF -->
+            </p>
+            <!-- IF topicrow.S_SELECT_TOPIC --><p><a href="{topicrow.U_SELECT_TOPIC}" class="button1 gradient link">{L_SELECT_MERGE}</a></p><!-- ENDIF -->
+
+            <!-- IF topicrow.S_MOVED_TOPIC and S_CAN_DELETE --><p><a href="{topicrow.U_DELETE_TOPIC}" class="topictitle">[ {L_DELETE_SHADOW_TOPIC} ]</a></p><!-- ENDIF -->
+            
+            <p><span class="replies" title="{L_REPLIES}">{topicrow.REPLIES}</span> {L_LAST_POST} {L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL}<br />{topicrow.LAST_POST_TIME}
+            </p>
+		</li>
+		<!-- END topicrow -->
+		</ul>
+    </div>
+	<!-- ELSE -->
+        <p class="block">{L_NO_TOPICS}</p>
+	<!-- ENDIF -->
+
+
+<fieldset class="display-actions">
+	<!-- IF not S_MERGE_SELECT -->
+	<select name="action">
+		<option value="" selected="selected">{L_SELECT_ACTION}</option>
+		<!-- IF S_CAN_DELETE --><option value="delete_topic">{L_DELETE}</option><!-- ENDIF -->
+		<!-- IF S_CAN_MERGE --><option value="merge_topics">{L_MERGE}</option><!-- ENDIF -->
+		<!-- IF S_CAN_MOVE --><option value="move">{L_MOVE}</option><!-- ENDIF -->
+		<!-- IF S_CAN_FORK --><option value="fork">{L_FORK}</option><!-- ENDIF -->
+		<!-- IF S_CAN_LOCK --><option value="lock">{L_LOCK}</option><option value="unlock">{L_UNLOCK}</option><!-- ENDIF -->
+		<!-- IF S_CAN_SYNC --><option value="resync">{L_RESYNC}</option><!-- ENDIF -->
+		<!-- IF S_CAN_MAKE_NORMAL --><option value="make_normal">{L_MAKE_NORMAL}</option><!-- ENDIF -->
+		<!-- IF S_CAN_MAKE_STICKY --><option value="make_sticky">{L_MAKE_STICKY}</option><!-- ENDIF -->
+		<!-- IF S_CAN_MAKE_ANNOUNCE -->
+			<option value="make_announce">{L_MAKE_ANNOUNCE}</option>
+			<option value="make_global">{L_MAKE_GLOBAL}</option>
+		<!-- ENDIF -->
+	</select>
+	<input class="button2" type="submit" value="{L_SUBMIT}" />
+	<!-- ENDIF -->
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<!-- INCLUDE mcp_footer.html -->

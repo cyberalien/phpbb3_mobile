@@ -1,0 +1,23 @@
+
+
+<!-- IF .draftrow -->
+<div class="forums">
+	<p class="header gradient">{L_LOAD_DRAFT}</p>
+	<p>{L_LOAD_DRAFT_EXPLAIN}</p>
+
+	<ul class="topiclist forums">
+	<!-- BEGIN draftrow -->
+	<li class="row link" onclick="document.location.href='{draftrow.U_INSERT}'; return false;">
+	    <p><a href="{draftrow.U_INSERT}" title="{L_LOAD_DRAFT}" class="topictitle">{draftrow.DRAFT_SUBJECT}</a></p>
+	    <!-- IF not S_PRIVMSGS -->
+        <p>
+            <!-- IF draftrow.S_LINK_TOPIC -->{L_TOPIC}: {draftrow.TITLE}
+            <!-- ELSEIF draftrow.S_LINK_FORUM -->{L_FORUM}: {draftrow.TITLE}
+            <!-- ELSE -->{L_NO_TOPIC_FORUM}<!-- ENDIF -->
+        </p><!-- ENDIF -->
+        <p>{draftrow.DATE}</p>
+	</li>
+	<!-- END draftrow -->
+	</ul>
+</div>
+<!-- ENDIF -->

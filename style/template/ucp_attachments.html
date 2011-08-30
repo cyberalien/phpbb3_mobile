@@ -1,0 +1,30 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+<h2>{L_TITLE}</h2>
+
+<p>{L_ATTACHMENTS_EXPLAIN}</p>
+
+<!-- IF .attachrow -->
+<div class="forums">		
+<ul class="topiclist forums">
+    <!-- BEGIN attachrow -->
+    <li class="row">
+        <p><input type="checkbox" name="attachment[{attachrow.ATTACH_ID}]" value="1" /> <a href="{attachrow.U_VIEW_ATTACHMENT}" class="topictitle">{attachrow.FILENAME}</a> ({attachrow.SIZE})</p>
+        <p><!-- IF attachrow.S_IN_MESSAGE -->{L_PM}: <!-- ELSE -->{L_TOPIC}: <!-- ENDIF --><a href="{attachrow.U_VIEW_TOPIC}">{attachrow.TOPIC_TITLE}</a></p>
+        <p><span class="replies<!-- IF not attachrow.DOWNLOAD_COUNT --> empty<!-- ENDIF -->" title="{L_DOWNLOADS}">{attachrow.DOWNLOAD_COUNT}</span> {attachrow.POST_TIME}</p>
+    </li>
+    <!-- END attachrow -->
+</ul>
+</div>
+
+{S_FORM_TOKEN}
+<input class="button2" type="submit" name="delete" value="{L_DELETE_MARKED}" />
+<!-- ELSE -->
+    <p class="block">{L_UCP_NO_ATTACHMENTS}</p>
+<!-- ENDIF -->
+
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

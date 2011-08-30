@@ -1,0 +1,41 @@
+	<div class="copyright">
+	    <p class="copy-left">
+	        Powered by <a href="http://www.phpbb.com/">phpBB</a> &copy; phpBB Group.
+		</p>
+		<p class="copy-right">
+		    phpBB Mobile / SEO by <a href="http://www.artodia.com/">Artodia</a>.
+        </p>
+	</div>
+</div>
+
+<div id="page-footer" class="nav-block gradient">
+	<p><a href="{U_INDEX}" accesskey="h">{L_INDEX}</a></p>
+    <ul id="page-footer-menu">
+        <li><a href="javascript:void(0);" class="menu-link main"><span>{L_INDEX}</span></a>
+            <ul class="sub sub-nojs">
+        		<!-- IF U_ACP --><li><a href="{U_ACP}">{L_ACP}</a></li><!-- ENDIF -->
+				<!-- IF not S_IS_BOT -->
+					<!-- IF S_WATCH_FORUM_LINK --><li><a href="{S_WATCH_FORUM_LINK}">{S_WATCH_FORUM_TITLE}</a></li><!-- ENDIF -->
+					<!-- IF U_WATCH_TOPIC --><li><a href="{U_WATCH_TOPIC}">{L_WATCH_TOPIC}</a></li><!-- ENDIF -->
+					<!-- IF U_BOOKMARK_TOPIC --><li><a href="{U_BOOKMARK_TOPIC}">{L_BOOKMARK_TOPIC}</a></li><!-- ENDIF -->
+					<!-- IF U_BUMP_TOPIC --><li><a href="{U_BUMP_TOPIC}">{L_BUMP_TOPIC}</a></li><!-- ENDIF -->
+				<!-- ENDIF -->
+    			<!-- IF U_TEAM --><li><a href="{U_TEAM}">{L_THE_TEAM}</a></li><!-- ENDIF -->
+    			<!-- IF not S_IS_BOT --><li><a href="{U_DELETE_COOKIES}">{L_DELETE_COOKIES}</a></li><!-- ENDIF -->
+    			<li><span>{S_TIMEZONE}</span></li>
+            </ul>
+        </li>
+        <!-- IF PAGE_NUMBER and PAGINATION -->
+        <li class="pages"><a href="javascript:void(0);" class="menu-link">#</a>
+            <ul class="sub sub-nojs">
+                <li>{PAGE_NUMBER} &nbsp; {PAGINATION}</li>
+    			<!-- IF PREVIOUS_PAGE --><li><a href="{PREVIOUS_PAGE}">{L_PREVIOUS}</a></li><!-- ENDIF -->
+			    <!-- IF NEXT_PAGE --><li><a href="{NEXT_PAGE}">{L_NEXT}</a></li><!-- ENDIF -->
+            </ul>
+        </li>
+        <!-- ENDIF -->
+    </ul>
+</div>
+
+</body>
+</html>

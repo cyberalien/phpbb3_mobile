@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}" xml:lang="{S_USER_LANG}">
+<head>
+<meta http-equiv="content-type" content="text/html; charset={S_CONTENT_ENCODING}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+{META}
+<title>{SITENAME} &bull; <!-- IF S_IN_MCP -->{L_MCP} &bull; <!-- ELSEIF S_IN_UCP -->{L_UCP} &bull; <!-- ENDIF -->{PAGE_TITLE}</title>
+<link href="{T_STYLESHEET_LINK}" rel="stylesheet" type="text/css" />
+<script src="{T_TEMPLATE_PATH}/mobile.js"></script>
+</head>
+
+<body id="phpbb" class="section-{SCRIPT_NAME} {S_CONTENT_DIRECTION}">
+
+<div id="page-header" class="nav-block gradient">
+    <ul id="page-header-start">
+        <li><a href="javascript:void(0);" class="menu-link back"><span>{L_INDEX}</span></a>
+            <ul class="sub sub-nojs">
+                <li><a href="{U_INDEX}">{L_INDEX}</a></li>
+                <!-- BEGIN navlinks --> 
+                    <li><a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a></li>
+                <!-- END navlinks -->   
+            </ul>
+        </li>
+    </ul>
+    <h1><!-- IF SCRIPT_NAME == 'viewforum' --><a href="{U_VIEWFORUM}">{FORUM_NAME}</a>
+        <!-- ELSEIF SCRIPT_NAME == 'viewtopic' --><a href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a>
+        <!-- ELSE --><a href="javascript:void(0);">{PAGE_TITLE}</a>
+        <!-- ENDIF --></h1>
+    <p>{SITE_DESCRIPTION}</p>
+    <ul id="page-header-menu">
+        <li><a href="javascript:void(0);" class="menu-link main"><span>{L_INDEX}</span></a>
+            <ul class="sub sub-nojs">
+    			<!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
+                    <li><a href="{U_PROFILE}">{L_PROFILE}</a></li>
+                    <!-- IF S_DISPLAY_PM --><li><a href="{U_PRIVATEMSGS}">{PRIVATE_MESSAGE_INFO}</a></li><!-- ENDIF -->
+                    <!-- IF U_RESTORE_PERMISSIONS --><li><a href="{U_RESTORE_PERMISSIONS}">{L_RESTORE_PERMISSIONS}</a></li><!-- ENDIF -->
+                <!-- ENDIF -->
+				<li><a href="{U_FAQ}">{L_FAQ}</a></li>
+				<!-- IF not S_IS_BOT -->
+					<!-- IF S_DISPLAY_MEMBERLIST --><li><a href="{U_MEMBERLIST}">{L_MEMBERLIST}</a></li><!-- ENDIF -->
+					<!-- IF not S_USER_LOGGED_IN and S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) --><li><a href="{U_REGISTER}">{L_REGISTER}</a></li><!-- ENDIF -->
+					<li><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></li>
+				<!-- ENDIF -->
+            </ul>
+        </li>
+        <!-- IF S_DISPLAY_SEARCH -->
+        <li><a href="javascript:void(0);" class="menu-link search"><span>{L_SEARCH_ADV}</span></a>
+            <ul class="sub sub-nojs">
+                <li><a href="{U_SEARCH}">{L_SEARCH_ADV}</a></li>
+                <!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
+                    <li><a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a></li>
+                <!-- ENDIF -->
+        		<li><a href="{U_SEARCH_UNANSWERED}">{L_SEARCH_UNANSWERED}</a></li>
+        		<!-- IF S_LOAD_UNREADS --><li><a href="{U_SEARCH_UNREAD}">{L_SEARCH_UNREAD}</a></li><!-- ENDIF -->
+        		<!-- IF S_USER_LOGGED_IN --><li><a href="{U_SEARCH_NEW}">{L_SEARCH_NEW}</a></li><!-- ENDIF -->
+        		<li><a href="{U_SEARCH_ACTIVE_TOPICS}">{L_SEARCH_ACTIVE_TOPICS}</a></li>
+            </ul>
+        </li>
+        <!-- ENDIF -->
+        <!-- IF PAGE_NUMBER and PAGINATION -->
+        <li class="pages"><a href="javascript:void(0);" class="menu-link">#</a>
+            <ul class="sub sub-nojs">
+                <li>{PAGE_NUMBER} &nbsp; {PAGINATION}</li>
+    			<!-- IF PREVIOUS_PAGE --><li><a href="{PREVIOUS_PAGE}">{L_PREVIOUS}</a></li><!-- ENDIF -->
+			    <!-- IF NEXT_PAGE --><li><a href="{NEXT_PAGE}">{L_NEXT}</a></li><!-- ENDIF -->
+            </ul>
+        </li>
+        <!-- ENDIF -->
+    </ul>
+</div>
+
+<div id="page-body">
+		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+		<div id="information" class="block rules">
+            <h2>{L_INFORMATION}</h2> 
+            {L_BOARD_DISABLED}
+		</div>
+        <!-- ELSEIF not S_IS_BOT && S_USER_LOGGED_IN && S_DISPLAY_PM && SCRIPT_NAME != 'ucp' -->
+            <!-- IF S_USER_NEW_PRIVMSG and S_USER_PM_POPUP -->
+                <div class="block rules" id="information">
+                    <a href="{U_PRIVATEMSGS}"><!-- IF S_USER_NEW_PRIVMSG > 1 -->{L_YOU_NEW_PMS}<!-- ELSE -->{L_YOU_NEW_PM}<!-- ENDIF --></a>
+                </div>
+            <!-- ELSEIF S_USER_UNREAD_PRIVMSG or S_USER_NEW_PRIVMSG -->
+                <div class="block rules" id="information">
+                    <h2>{L_PRIVATE_MESSAGES}</h2>
+                    <a href="{U_PRIVATEMSGS}">{PRIVATE_MESSAGE_INFO}<!-- IF PRIVATE_MESSAGE_INFO_UNREAD -->, {PRIVATE_MESSAGE_INFO_UNREAD}<!-- ENDIF --></a>
+                </div>
+            <!-- ENDIF -->
+        <!-- ENDIF -->  

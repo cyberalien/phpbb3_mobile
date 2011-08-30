@@ -1,0 +1,42 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+<p>{L_BOOKMARKS_EXPLAIN}</p>
+
+<!-- IF S_NO_DISPLAY_BOOKMARKS -->
+<p class="rules">{L_BOOKMARKS_DISABLED}</p>
+<!-- ELSE -->
+
+<!-- IF .topicrow -->
+<div class="forums">
+	<ul class="topiclist forums">
+
+	<!-- BEGIN topicrow -->
+        <!-- IF topicrow.S_DELETED_TOPIC -->
+            <li class="row">
+                <p><input type="checkbox" name="t[{topicrow.TOPIC_ID}]" id="t{topicrow.TOPIC_ID}" /> {L_DELETED_TOPIC}</p>
+            </li>
+        <!-- ELSE -->
+            <li class="row<!-- IF topicrow.S_UNREAD_TOPIC --> row-new<!-- ENDIF -->">
+                <p><input type="checkbox" name="t[{topicrow.TOPIC_ID}]" id="t{topicrow.TOPIC_ID}" />
+                    <a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
+                    <!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}" class="newest">{L_NEW_POST}</a><!-- ENDIF -->
+                <!-- IF topicrow.PAGINATION --><span class="pages">{topicrow.PAGINATION}</span><!-- ENDIF -->
+                </p>
+                <p>{L_LAST_POST}: {topicrow.LAST_POST_TIME}</p>
+            </li>
+        <!-- ENDIF -->
+	<!-- END topicrow -->
+	</ul>
+</div>
+<input type="submit" name="unbookmark" value="{L_REMOVE_BOOKMARK_MARKED}" class="button2" />
+{S_FORM_TOKEN}
+<!-- ELSE -->
+	<p class="block">{L_NO_BOOKMARKS}</p>
+<!-- ENDIF -->
+
+<!-- ENDIF -->
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

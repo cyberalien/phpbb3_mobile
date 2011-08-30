@@ -1,0 +1,34 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+	<p>{L_FRIENDS_EXPLAIN}</p>
+
+	<fieldset class="fields2">
+	<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+	<dl>
+		<dt><label <!-- IF S_USERNAME_OPTIONS -->for="usernames"<!-- ENDIF -->>{L_YOUR_FRIENDS}:</label></dt>
+		<dd>
+			<!-- IF S_USERNAME_OPTIONS -->
+				<select name="usernames[]" id="usernames" multiple="multiple" size="5" style="width: 160px">{S_USERNAME_OPTIONS}</select>
+			<!-- ELSE -->
+				<strong>{L_NO_FRIENDS}</strong>
+			<!-- ENDIF -->
+		</dd>
+	</dl>
+	<p class="explain">{L_YOUR_FRIENDS_EXPLAIN}</p>
+	<dl>
+		<dt><label for="add">{L_ADD_FRIENDS}:</label></dt>
+		<dd><textarea name="add" id="add" rows="3" cols="30" class="inputbox">{USERNAMES}</textarea></dd>
+	</dl>
+	<p class="explain">{L_ADD_FRIENDS_EXPLAIN}</p>
+	</fieldset>
+
+<fieldset class="submit-buttons">
+	{S_HIDDEN_FIELDS}<input type="reset" value="{L_RESET}" name="reset" class="button2" />&nbsp; 
+	<input type="submit" name="submit" value="{L_SUBMIT}" class="button1" />
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

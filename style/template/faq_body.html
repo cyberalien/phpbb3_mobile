@@ -1,0 +1,32 @@
+<!-- INCLUDE overall_header.html -->
+
+<h2>{L_FAQ_TITLE}</h2>
+
+
+<div class="block" id="faqlinks">
+    <!-- BEGIN faq_block -->
+        <dl class="faq">
+            <dt>{faq_block.BLOCK_TITLE}</dt>
+            <!-- BEGIN faq_row -->
+                <dd><a href="#f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}">{faq_block.faq_row.FAQ_QUESTION}</a></dd>
+            <!-- END faq_row -->
+        </dl>
+    <!-- END faq_block -->
+</div>
+
+<!-- BEGIN faq_block -->
+	<div class="block">
+        <h2>{faq_block.BLOCK_TITLE}</h2>
+        <!-- BEGIN faq_row -->
+            <dl class="faq">
+                <dt id="f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}">{faq_block.faq_row.FAQ_QUESTION}</dt>
+                <dd>{faq_block.faq_row.FAQ_ANSWER}</dd>
+                <dd><a href="#faqlinks" class="top2">{L_BACK_TO_TOP}</a></dd>
+            </dl>
+            <!-- IF not faq_block.faq_row.S_LAST_ROW --><hr class="dashed" /><!-- ENDIF -->
+        <!-- END faq_row -->
+	</div>
+<!-- END faq_block -->
+
+<!-- INCLUDE jumpbox.html -->
+<!-- INCLUDE overall_footer.html -->

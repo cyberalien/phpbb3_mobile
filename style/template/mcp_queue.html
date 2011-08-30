@@ -1,0 +1,49 @@
+<!-- INCLUDE mcp_header.html -->
+
+<form id="mcp" method="post" action="{S_MCP_ACTION}">
+
+<fieldset class="forum-selection">
+	<label for="fo">{L_FORUM}: <select name="f" id="fo">{S_FORUM_OPTIONS}</select></label>
+	<input type="submit" name="sort" value="{L_GO}" class="button2" />
+	{S_FORM_TOKEN}
+</fieldset>
+
+	<p>{L_EXPLAIN}</p>
+
+	<!-- IF .postrow -->
+    	<div class="forums">
+			<ul class="topiclist forums">
+
+		<!-- BEGIN postrow -->
+
+		<!-- IF postrow.S_DELETED_TOPIC -->
+			<li><p class="notopics">{L_DELETED_TOPIC}</p></li>
+		<!-- ELSE -->
+
+		<li>
+		    <p><input type="checkbox" name="post_id_list[]" value="{postrow.POST_ID}" />
+		        <a href="{postrow.U_VIEW_DETAILS}" class="topictitle">{postrow.POST_SUBJECT}</a>
+            </p>
+            <p>{L_POSTED} {L_POST_BY_AUTHOR} {postrow.POST_AUTHOR_FULL} &raquo; {postrow.POST_TIME}<br />
+                <!-- IF not S_TOPICS -->{L_TOPIC}: <a href="{postrow.U_TOPIC}">{postrow.TOPIC_TITLE}</a> <br /><!-- ENDIF -->
+                    {L_FORUM}: <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a>
+
+            </p>
+		</li>
+		<!-- ENDIF -->
+		<!-- END postrow -->
+		</ul>
+        </div>
+	<!-- ELSE -->
+		<p class="block"><!-- IF S_TOPICS -->{L_NO_TOPICS_QUEUE}<!-- ELSE -->{L_UNAPPROVED_POSTS_ZERO_TOTAL}<!-- ENDIF --></p>
+	<!-- ENDIF -->
+
+<!-- IF .postrow -->
+	<fieldset class="display-actions">
+		<input class="button2" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}" />&nbsp;
+		<input class="button1" type="submit" name="action[approve]" value="{L_APPROVE}" />
+	</fieldset>
+<!-- ENDIF -->
+</form>
+
+<!-- INCLUDE mcp_footer.html -->

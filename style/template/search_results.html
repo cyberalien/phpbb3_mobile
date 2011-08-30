@@ -1,0 +1,92 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF not SEARCH_TITLE -->
+    <p>{SEARCH_MATCHES}<!-- IF SEARCH_WORDS -->: <a href="{U_SEARCH_WORDS}">{SEARCH_WORDS}</a><!-- ENDIF --></p>
+    <!-- IF IGNORED_WORDS --> <p>{L_IGNORED_TERMS}: <strong>{IGNORED_WORDS}</strong></p><!-- ENDIF -->
+    <!-- IF SEARCH_TOPIC -->
+        <p><a class="{S_CONTENT_FLOW_BEGIN}" href="{U_SEARCH_TOPIC}">{L_RETURN_TO}: {SEARCH_TOPIC}</a></p>
+    <!-- ELSE -->
+        <p><a class="{S_CONTENT_FLOW_BEGIN}" href="{U_SEARCH}" title="{L_SEARCH_ADV}">{L_RETURN_TO_SEARCH_ADV}</a></p>
+    <!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- IF SEARCH_MATCHES -->
+	<form method="post" action="{S_SEARCH_ACTION}">
+		<div class="search-box">
+			<!-- IF SEARCH_IN_RESULTS -->
+				<label for="add_keywords">{L_SEARCH_IN_RESULTS}: <input type="text" name="add_keywords" id="add_keywords" value="" class="inputbox narrow" /></label>
+				<input class="button2" type="submit" name="submit" value="{L_SEARCH}" />
+			<!-- ENDIF -->
+		</div>
+	</form>
+<!-- ENDIF -->
+
+<!-- IF S_SHOW_TOPICS -->
+	<!-- IF .searchresults -->
+	<div class="forums">
+		<ul class="topiclist forums">
+
+		<!-- BEGIN searchresults -->
+			<li class="row link<!-- IF searchresults.S_UNREAD_TOPIC --> row-new<!-- ENDIF -->" onclick="document.location.href='<!-- IF searchresults.S_UNREAD_TOPIC -->{searchresults.U_NEWEST_POST}<!-- ELSE -->{searchresults.U_VIEW_TOPIC}<!-- ENDIF -->'; return false;">
+                <p>
+                    <a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a>
+                    <!-- IF searchresults.S_UNREAD_TOPIC --><a href="{searchresults.U_NEWEST_POST}" class="newest">{L_NEW_POST}</a><!-- ENDIF -->
+                    <!-- IF searchresults.PAGINATION --><span class="pages">{searchresults.PAGINATION}</span><!-- ENDIF -->
+                </p>
+                <p>
+                    {L_POST_BY_AUTHOR} {searchresults.TOPIC_AUTHOR}
+						<!-- IF not searchresults.S_TOPIC_GLOBAL -->{L_IN} <a href="{searchresults.U_VIEW_FORUM}">{searchresults.FORUM_TITLE}</a><!-- ENDIF -->
+                </p>
+                <p>
+                    <span class="replies<!-- IF not searchresults.TOPIC_REPLIES --> empty<!-- ENDIF -->" title="{L_REPLIES}">{searchresults.TOPIC_REPLIES}</span>
+                    {searchresults.LAST_POST_TIME}
+                </p>
+			</li>
+		<!-- END searchresults -->
+		</ul>
+	</div>
+	<!-- ELSE -->
+		<div class="block rules">
+			{L_NO_SEARCH_RESULTS}
+		</div>
+	<!-- ENDIF -->
+
+<!-- ELSE -->
+
+	<!-- BEGIN searchresults -->
+		<div class="search post block">
+	<!-- IF searchresults.S_IGNORE_POST -->
+			<div class="postbody">{searchresults.L_IGNORE_POST}</div>
+	<!-- ELSE -->
+    		<div class="post-header">
+    		    <div class="post-author gradient"><a href="javascript:void(0);">{searchresults.POST_AUTHOR}</a></div>
+	    		<h2><a href="{searchresults.U_VIEW_POST}">{searchresults.POST_SUBJECT}</a></h2>
+            </div>
+            <div class="post-time">
+                {searchresults.POST_DATE}
+            </div>
+            <div class="post-details" onclick="document.location.href='{searchresults.U_VIEW_POST}'; return false;">
+    			<!-- IF searchresults.FORUM_TITLE -->
+				    {L_FORUM}: <a href="{searchresults.U_VIEW_FORUM}">{searchresults.FORUM_TITLE}</a>
+				    <br />{L_TOPIC}: <a href="{searchresults.U_VIEW_TOPIC}">{searchresults.TOPIC_TITLE}</a>
+    			<!-- ELSE -->
+    				{L_GLOBAL}: <a href="{searchresults.U_VIEW_TOPIC}">{searchresults.TOPIC_TITLE}</a>
+                <!-- ENDIF -->
+                    <br /><span class="replies" title="{L_REPLIES}">{searchresults.TOPIC_REPLIES}</span>
+                        <span class="replies" title="{L_VIEWS}">{searchresults.TOPIC_VIEWS}</span>
+            </div>
+			<div class="postbody">
+			    {searchresults.MESSAGE}
+            </div>
+	<!-- ENDIF -->
+		</div>
+	<!-- BEGINELSE -->
+		<div class="block">
+			{L_NO_SEARCH_RESULTS}
+		</div>
+	<!-- END searchresults -->
+<!-- ENDIF -->
+
+<!-- INCLUDE jumpbox.html -->
+
+<!-- INCLUDE overall_footer.html -->
