@@ -21,7 +21,7 @@
 
 <body id="phpbb" class="section-{SCRIPT_NAME} {S_CONTENT_DIRECTION}">
 
-<div id="page-header" class="nav-block gradient">
+<div id="page-header" class="nav-block gradient <!-- IF S_DISPLAY_SEARCH --><!-- IF PAGE_NUMBER and PAGINATION -->menu-3<!-- ELSE -->menu-2<!-- ENDIF --><!-- ELSEIF PAGE_NUMBER and PAGINATION -->menu-2<!-- ELSE -->menu-1<!-- ENDIF -->">
     <ul id="page-header-start">
         <li><a href="javascript:void(0);" class="menu-link back"><span>{L_INDEX}</span></a>
             <ul class="sub sub-nojs">
@@ -32,11 +32,6 @@
             </ul>
         </li>
     </ul>
-    <h1><!-- IF SCRIPT_NAME == 'viewforum' --><a href="{U_VIEWFORUM}">{FORUM_NAME}</a>
-        <!-- ELSEIF SCRIPT_NAME == 'viewtopic' --><a href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a>
-        <!-- ELSE --><a href="javascript:void(0);">{PAGE_TITLE}</a>
-        <!-- ENDIF --></h1>
-    <p>{SITE_DESCRIPTION}</p>
     <ul id="page-header-menu">
         <li><a href="javascript:void(0);" class="menu-link main"><span>{L_INDEX}</span></a>
             <ul class="sub sub-nojs">
@@ -77,6 +72,11 @@
         </li>
         <!-- ENDIF -->
     </ul>
+    <h1><!-- IF SCRIPT_NAME == 'viewforum' --><a href="{U_VIEWFORUM}">{FORUM_NAME}</a>
+        <!-- ELSEIF SCRIPT_NAME == 'viewtopic' --><a href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a>
+        <!-- ELSE --><a href="javascript:void(0);">{PAGE_TITLE}</a>
+        <!-- ENDIF --></h1>
+    <p>{SITE_DESCRIPTION}</p>
 </div>
 
 <div id="page-body">

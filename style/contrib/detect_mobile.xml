@@ -13,7 +13,7 @@
 				<username><![CDATA[CyberAlien]]></username>
 			</author>
 		</author-group>
-		<mod-version>1.1</mod-version>
+		<mod-version>1.2</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>60</time>
@@ -57,7 +57,7 @@
 	function check_mobile($sql, $style)
 	{
         $browser = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
-        if (!empty($this->data['is_bot']) || strpos($browser, 'Mobile') !== false || strpos($browser, 'Symbian') !== false || strpos($browser, 'Opera M') !== false || strpos($browser, 'Android') !== false || stripos($browser, 'HTC_') !== false || strpos($browser, 'Fennec/') !== false || stripos($browser, 'Blackberry') !== false)
+        if (!empty($this->data['is_bot']) || strpos($browser, 'Mobile') !== false || strpos($browser, 'Symbian') !== false || strpos($browser, 'Opera M') !== false || strpos($browser, 'Android') !== false || stripos($browser, 'HTC_') !== false || strpos($browser, 'Fennec/') !== false || stripos($browser, 'Blackberry') !== false || strpos($browser, 'Windows Phone') !== false)
         {
             global $db;
 			// Important: change number 0 below to ID of Artodia:Mobile style.
@@ -71,6 +71,7 @@
                 $db->sql_freeresult($result);
                 if($this->theme !== false)
                 {
+                	define('MOBILE_STYLE', true);
                     return false;
                 }
 			}
@@ -95,6 +96,7 @@
                         $db->sql_freeresult($result);
                         if($this->theme !== false)
                         {
+		                	define('MOBILE_STYLE', true);
                             return false;
                         }
 			        }
