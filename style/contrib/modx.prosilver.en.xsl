@@ -220,47 +220,12 @@ a:active {
 	padding:3px 1px;
 	min-width:550px;
 	background-color:#FFFFFF;
-	border:1px #999999 solid;
+	border: 1px #ccc solid;
+	border-radius: 8px;
 }
 
 .panel {
-	background:#F3F3F3 url(data:image/gif;base64,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) repeat-x top;
-	padding:0;
-}
-
-span.corners-top, span.corners-bottom, span.corners-top span, span.corners-bottom span {
-	font-size:1px;
-	line-height:1px;
-	display:block;
-	height:5px;
-	background-repeat:no-repeat;
-}
-
-span.corners-top, span.corners-bottom {
-	background-image:url(data:image/gif;base64,R0lGODlhiBMMAMQSAP///5mZmfPz89vX0cvIw9zc3PX19bKysqmopvb29pqamvn5+Z2dnLy6t62sqp+fnqCgn/T09P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABIALAAAAACIEwwAAAX/4DAQDhScaKqubOu+cCzPdG3feK7vfO//wKBwSCwaj8ikcslsOp/QqHRKrVqv2Kx2y+16v+CweEwum8/otHrNbrvf8Lh8Tq/b7/i8fs/v+/+AgYKDhIWGh4hSAw0HBREAkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PG7BAoCAAkCEvr7/P3+/wADChxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhT/6pcybKly5cwY8qcSbOmzZs4c+rcybOnz59AgwodSrSo0aNIkypdyrSp06dQo0qdSrWq1atYs2rdShJBAQBcw4odS7as2bNo06pdy7at27dw48qdS7eu3bt48+rdy7ev37+AAwseTLiw4cOIizJYYCCx48eQI0ueTLmy5cuYM2vezLmz58+gQ4seTbq06dOoU6teHToAgHysY8ueTbu27du4c+vezbu379/AgwsfTry48ePIkyuX4Br28ufQo0ufTr269evYs2vfzr279+/gw4sfT7704sbl06tfz769+/fw48ufT7++/fv48+vfzx+vV7D9BSjggAQWaOCBCCao4JmCDDbo4IMQRijhdfTYg8+EGGao4YYcdujhhyCGKOKIJJZo4oko5rVIIwbI4+KLMMYo44w01mjjjTjmqOOOPPbo449ABinkkEQWaeSRSCap5JJMNunkk1BGKeWUVFaZjQgkPJDIllx26eWXYIYp5phklmnmmWimqeaabLbp5ptwxinnnHTWaeedeOap55589unnn4AGKigcIQAAOw==);
-}
-
-span.corners-top span, span.corners-bottom span {
-	background-image:url(data:image/gif;base64,R0lGODlhBgAMAMQWAP///9vX0fPz85mZmdzc3Jqamtvb28vIw7y6t62sqsvIxPX19bKysqmop/T09Pb29pycnJ+fnp2dnKCgn/n5+fr6+v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABYALAAAAAAGAAwAAAUs4DAlRxAADsEggfAAQqFYNGA0tLVQUi4AAx8w56hAcraGCyYDLFSsQYRkCgEAOw==);
-}
-
-span.corners-top {
-	background-position:0 0;
-	margin:-4px -2px 0;
-}
-
-span.corners-top span {
-	background-position:100% 0;
-}
-
-span.corners-bottom {
-	background-position:0 100%;
-	margin:0 -2px -4px;
-	clear:both;
-}
-
-span.corners-bottom span {
-	background-position:100% 100%;
+	padding: 6px 0;
 }
 
 /* General form styles
@@ -293,21 +258,16 @@ fieldset p {
 
 legend {
 	padding:1px 5px;
-	font-family:Tahoma,arial,Verdana,Sans-serif;
+	font-family: Arial,Verdana,Sans-serif;
 	font-size:1.06em;
 	font-weight:bold;
 	color:#115098;
-	margin-top:-.4em;
 	position:relative;
-/*	text-transform:capitalize;*/
 	line-height:1.00em;
 	top:0;
 	vertical-align:middle;
+	top:-1.2em;
 }
-
-/* Hide from macIE \*/
-legend { top:-1.2em; }
-/* end */
 
 * html legend {
 	margin-bottom:-10px;
@@ -354,42 +314,11 @@ fieldset.nobg {
 
 .mod-about {
 	background-color:#CADCEB;
+	border-radius: 6px;
+	padding: 6px 0;
 	/*width:100%;*/
 }
-
-.mod-about span.corners-top, .mod-about span.corners-bottom, .mod-about span.corners-top span, .mod-about span.corners-bottom span {
-	font-size:1px;
-	line-height:1px;
-	display:block;
-	height:5px;
-	background-repeat:no-repeat;
-}
-
-.mod-about span.corners-top, .mod-about span.corners-bottom {
-background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMCAYAAABBV8wuAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABVSURBVHjaYviPAD+BeDIQ2wMxGwNU8AkQGwAxAwwzQFXqIgvCJCajC8IkbLBJMIItYmD4xYAGmBhwAJCEMS6JcKxa8DkX5kFdbBKwIJkADRIGgAADAGtyotIvyqGpAAAAAElFTkSuQmCC);
-}
-
-.mod-about span.corners-top span, .mod-about span.corners-bottom span {	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMCAYAAABBV8wuAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABbSURBVHjaYvr//z8bENsD8WQg/vkfChjQsAEQPwFJMDGgggtA7AnEv9AlQOAyEM/CJgECK3FJnMIlwYZLQheXRDg2CV0gzmTCIrgd2Q4bIJ4AxGeAWBokABBgAE4XMoXm9S+UAAAAAElFTkSuQmCC);
-}
-
-.mod-about span.corners-top {
-	background-position:0 0;
-	margin:0 0;
-}
-
-.mod-about span.corners-top span {
-	background-position:100% 0;
-}
-
-.mod-about span.corners-bottom {
-	background-position:0 100%;
-	margin:0 0;
-	clear:both;
-}
-
-.mod-about span.corners-bottom span {
-	background-position:100% 100%;
-}
+.mod-about .mod-about { padding: 0; }
 
 .mod-about-padding { padding: 0 8px; }
 .mod-about { margin:7px 4px 10px 4px; }
@@ -404,8 +333,9 @@ background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMCAYAA
 #language { width:130px; }
 #modDisclaimer .mod-about, #other-notes.mod-about { background-color:#EECCCC; }
 #other-notes.mod-about strong.red { color:#DD3333; }
-span.key { font-size:12px; line-height:14px; padding-bottom:2px; width:20px; border:outset 2px #999999; background-color:#EEEECC; display:block; float:left; text-align:center; margin-right:5px; }
-.mod-edit { background-color:#D6E6F6; border:solid 1px #336699; margin:10px 0; padding:0 10px; }
+span.key { font-size:12px; line-height:14px; padding-bottom:2px; width:20px; border:outset 1px #999999; background-color:#EEEECC; display:block; float:left; text-align:center; margin-right:5px; }
+span.key:hover { background-color: #eaea9b; color: #000; }
+.mod-edit { background-color:#D6E6F6; border:solid 1px #336699; margin:10px 0; padding:0 10px; border-radius: 6px; }
 .mod-inlineedit { background-color:#DDEEFF; border:solid 1px #6699CC; margin:10px 0; padding:0 10px; }
 
 dl.author-info dd { margin-left:112px; margin-bottom:8px; }
@@ -422,6 +352,7 @@ div.codebox {
 	padding:3px;
 	background-color:#FFFFFF;
 	border:1px solid #d8d8d8;
+	border-radius: 6px;
 	font-size:1em;
 }
 
@@ -445,10 +376,9 @@ blockquote div.codebox {
 div.codebox pre {
 	/* Also see tweaks.css */
 	width:100%;
-	overflow-x:scroll;
+	overflow: auto;
 	display:block;
 	height:auto;
-	max-height:200px;
 	/*white-space:normal;*/
 	padding-top:5px;
 	font:0.9em Monaco, "Andale Mono","Courier New", Courier, mono;
@@ -1637,7 +1567,7 @@ function toggle_edit(o)
 			</div>
 			<div id="page-body">
 				<div id="acp">
-					<div class="panel"><span class="corners-top"><span></span></span>
+					<div class="panel">
 						<div id="content">
 							<div id="main">
 								<xsl:for-each select="mod:header">
@@ -1656,7 +1586,7 @@ function toggle_edit(o)
 								</div>
 							</div>
 						</div>
-					<span class="corners-bottom"><span></span></span></div>
+					</div>
 				</div>
 			</div>
 			<div id="page-footer">
@@ -1671,7 +1601,6 @@ function toggle_edit(o)
 		<fieldset>
 			<legend id="lang-atm">About this MOD</legend>
 			<div class="mod-about">
-				<span class="corners-top"><span></span></span>
 				<dl>
 					<dt id="lang-t" name="left4px">Title:</dt>
 					<dd>
@@ -1751,7 +1680,6 @@ function toggle_edit(o)
 						</dd>
 					</xsl:if>
 				</dl>
-				<span class="corners-bottom"><span></span></span>
 			</div>
 		</fieldset>
 		<fieldset>
@@ -1821,7 +1749,6 @@ function toggle_edit(o)
 		<div id="modDisclaimer">
 			<h3><span id="lang-dcl">Disclaimer</span>&nbsp;<span id="lang-ont">and other notes</span></h3>
 			<div class="mod-about">
-				<span class="corners-top"><span></span></span>
 				<div class="mod-about-padding">
 					<p><span id="lang-dclt">For security purposes, please check: <a href="http://www.phpbb.com/mods/">http://www.phpbb.com/mods/</a> for the latest version of this MOD. Downloading this MOD from other sites could cause malicious code to enter into your phpBB Forum. As such, phpBB will not offer support for MODs not offered in our MODs database, located at: <a href="http://www.phpbb.com/mods/">http://www.phpbb.com/mods/</a></span></p>
 					<p><span id="lang-ontt1">Before adding this MOD to your forum, you should back up all files and databases related to this MOD.</span></p>
@@ -1832,20 +1759,18 @@ function toggle_edit(o)
 						</xsl:if>
 					</xsl:for-each>
 				</div>
-				<span class="corners-bottom"><span></span></span>
 			</div>
 		</div>
 		<div>
 			<h3><span id="lang-lic">License</span>&nbsp;<span id="lang-isp">and English support</span></h3>
 			<div class="mod-about">
-				<span class="corners-top"><span></span></span>
 				<div class="mod-about-padding">
 					<p><span id="lang-lict">This MOD has been licensed under the following license:</span></p>
 					<p style='white-space:pre;'><a href="license.txt"><xsl:value-of select="mod:license" /></a></p>
 					<p><span id="lang-ispt">English support can be obtained at <a href="http://www.phpbb.com/mods/">http://www.phpbb.com/mods/</a> for released MODs.</span></p>
 					<p><span id="lang-ispt-int">Support in your language <strong>might</strong> be available at a <a href="http://www.phpbb.com/support/intl/">international support site</a>.</span></p>
 				</div>
-				<span class="corners-bottom"><span></span></span>
+				
 			</div>
 			<xsl:for-each select="mod:history">
 				<xsl:call-template name="give-mod-history"></xsl:call-template>
@@ -1856,7 +1781,6 @@ function toggle_edit(o)
 	<xsl:template name="give-authors">
 		<xsl:for-each select="mod:author">
 			<div class="mod-about">
-				<span class="corners-top"><span></span></span>
 					<dl class="author-info">
 						<dt id="lang-a-un[{generate-id()}]" name="left4px">Username:</dt>
 
@@ -1938,7 +1862,7 @@ function toggle_edit(o)
 							</xsl:for-each>
 						</xsl:if>
 					</dl>
-				<span class="corners-bottom"><span></span></span>
+				
 			</div>
 		</xsl:for-each>
 	</xsl:template>
@@ -1971,11 +1895,10 @@ function toggle_edit(o)
 			<fieldset>
 			<legend id="lang-mh">MOD history</legend>
 			<div class="mod-about" id="history_toggle_area" style="display:none;">
-				<span class="corners-top"><span></span></span>
 				<div class="mod-about-padding">
 					<a href="#" id="history_toggle_link" rel="show" onclick="return toggle_history(this);"></a>
 				</div>
-				<span class="corners-bottom"><span></span></span>
+				
 			</div>
 			<div id="mod_history_content">
 			<xsl:for-each select="mod:entry">
@@ -1988,7 +1911,6 @@ function toggle_edit(o)
 
 	<xsl:template name="give-history-entry">
 		<div class="mod-about">
-			<span class="corners-top"><span></span></span>
 			<dl class="mod-history">
 				<dt>
 					<p><strong><xsl:value-of select="substring(mod:date,1,10)" />&nbsp;<span id="lang-mhe-v[{generate-id()}]">- Version</span>
@@ -2012,7 +1934,7 @@ function toggle_edit(o)
 					</xsl:if>
 				</dd>
 			</dl>
-			<span class="corners-bottom"><span></span></span>
+			
 		</div>
 	</xsl:template>
 
@@ -2089,11 +2011,10 @@ function toggle_edit(o)
 			</form>
 			<h2 id="lang-sql">SQL</h2>
 			<div id="sql" class="mod-about">
-				<span class="corners-top"><span></span></span>
 					<xsl:for-each select="mod:sql">
 						<xsl:call-template name="give-sql"></xsl:call-template>
 					</xsl:for-each>
-				<span class="corners-bottom"><span></span></span>
+				
 			</div>
 		</xsl:if>
 		<xsl:if test="count(mod:copy) > 0">
@@ -2120,7 +2041,6 @@ function toggle_edit(o)
 		<xsl:if test="count(mod:php-installer) > 0">
 			<h2 id="lang-installer-h2">PHP install file</h2>
 			<div class="mod-about">
-				<span class="corners-top"><span></span></span>
 					<div class="mod-about-padding">
 						<p>
 							<span id="lang-installer-exp1">There is a PHP install file that needs to be run in order to complete the installation.</span>
@@ -2134,7 +2054,7 @@ function toggle_edit(o)
 							</div>
 						</div>
 					</div>
-				<span class="corners-bottom"><span></span></span>
+				
 			</div>
 		</xsl:if>
 		<xsl:call-template name="give-manual" />
@@ -2158,7 +2078,6 @@ function toggle_edit(o)
 		<xsl:if test="count(mod:diy-instructions)">
 			<h2 id="lang-diy">DIY instructions</h2>
 			<div class="mod-about">
-				<span class="corners-top"><span></span></span>
 					<div class="mod-about-padding">
 					<p><span id="lang-diyt">These are manual instructions that cannot be performed automatically. You should follow these instructions carefully.</span></p>
 					</div>
@@ -2174,14 +2093,13 @@ function toggle_edit(o)
 							</div>
 						</xsl:for-each>
 					</div>
-				<span class="corners-bottom"><span></span></span>
+				
 			</div>
 		</xsl:if>
 	</xsl:template>
 
 	<xsl:template name="give-fileo">
 		<div class="mod-about">
-			<span class="corners-top"><span></span></span>
 			<div class="editFile">
 				<h3><span id="lang-opn[{generate-id()}]">Open:</span>&nbsp;<a name="{@src}"><xsl:value-of select="@src" /></a></h3>
 				<xsl:for-each select="mod:edit">
@@ -2305,7 +2223,7 @@ function toggle_edit(o)
 					</div>
 				</xsl:for-each>
 			</div>
-			<span class="corners-bottom"><span></span></span>
+			
 		</div>
 	</xsl:template>
 
