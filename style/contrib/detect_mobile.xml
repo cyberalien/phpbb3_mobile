@@ -57,7 +57,7 @@
 	function check_mobile($sql, $style)
 	{
         $browser = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
-        if (!empty($this->data['is_bot']) || strpos($browser, 'Mobile') !== false || strpos($browser, 'Symbian') !== false || strpos($browser, 'Opera M') !== false || strpos($browser, 'Android') !== false || stripos($browser, 'HTC_') !== false || strpos($browser, 'Fennec/') !== false || stripos($browser, 'Blackberry') !== false || strpos($browser, 'Windows Phone') !== false)
+        if (!empty($this->data['is_bot']) || strpos($browser, 'Mobile') !== false || strpos($browser, 'Symbian') !== false || strpos($browser, 'Opera M') !== false || strpos($browser, 'Android') !== false || stripos($browser, 'HTC_') !== false || strpos($browser, 'Fennec/') !== false || stripos($browser, 'Blackberry') !== false || strpos($browser, 'Windows Phone') !== false || strpos($browser, 'WP7') !== false || strpos($browser, 'WP8') !== false)
         {
             global $db;
 			// Important: change number 0 below to ID of Artodia:Mobile style.
