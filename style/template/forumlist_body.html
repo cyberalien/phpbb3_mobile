@@ -11,7 +11,7 @@
 		    <!-- IF forumrow.S_IS_CAT -->
 		        <p class="header gradient link" onclick="document.location.href='{forumrow.U_VIEWFORUM}';"><a href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a></p>
 		        <!-- IF S_IS_BOT and forumrow.FORUM_DESC --><p>{forumrow.FORUM_DESC}</p><!-- ENDIF -->
-            <!-- ELSEIF forumrow.S_FIRST_ROW -->
+            <!-- ELSE -->
 		        <p class="header gradient">{L_FORUMS}</p>
             <!-- ENDIF -->
 			<ul class="topiclist forums">
