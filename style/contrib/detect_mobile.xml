@@ -13,7 +13,7 @@
 				<username><![CDATA[Arty]]></username>
 			</author>
 		</author-group>
-		<mod-version>1.2</mod-version>
+		<mod-version>2.0</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>60</time>
@@ -21,6 +21,34 @@
 		</installation>
 	</header>
 	<action-group>
+		<open src="includes/functions.php">
+			<edit>
+				<find><![CDATA[	// The following assigns all _common_ variables that may be used at any point in a template.
+]]></find>
+				<action type="before-add"><![CDATA[	// MOD start: Mobile/SEO style
+	if(defined('MOBILE_DEVICE'))
+	{
+		$full_style = defined('MOBILE_DEVICE_OFF');
+		if($full_style)
+		{
+			$s_search_hidden_fields['nomobile'] = 1;
+			$mobile_text = isset($user->lang['MOBILE_ON']) ? $user->lang['MOBILE_ON'] : 'Mobile Version';
+			$mobile_link = str_replace('nomobile=1&amp;', '', append_sid("{$phpbb_root_path}index.$phpEx", 'nomobile=0'));
+		}
+		else
+		{
+			$mobile_text = isset($user->lang['MOBILE_OFF']) ? $user->lang['MOBILE_OFF'] : 'Full Version';
+			$mobile_link = append_sid("{$phpbb_root_path}index.$phpEx", 'nomobile=1');
+		}
+		$mobile_html = '<a href="' . $mobile_link . '">' . $mobile_text . '</a>';
+		$user->lang['TRANSLATION_INFO'] = (isset($user->lang['TRANSLATION_INFO']) ? $user->lang['TRANSLATION_INFO'] . ' ' : '') . $mobile_html;
+		$template->assign_var('MOBILE_LINK', $mobile_html);
+	}
+	// MOD end: Mobile/SEO style
+
+]]></action>
+			</edit>
+		</open>
 		<open src="includes/session.php">
 			<edit>
 				<find><![CDATA[		$result = $db->sql_query($sql, 3600);
@@ -29,10 +57,11 @@
 
 		// User has wrong style
 ]]></find>
-				<action type="before-add"><![CDATA[        // MOD start: Mobile/SEO style
-        if($this->check_mobile($sql, $style))
-        {
-        // MOD end: Mobile/SEO style
+				<action type="before-add"><![CDATA[		// MOD start: Mobile/SEO style
+		if($this->check_mobile($sql, $style))
+		{
+		// MOD end: Mobile/SEO style
+
 ]]></action>
 			</edit>
 			<edit>
@@ -41,71 +70,86 @@
 			trigger_error('Could not get style data', E_USER_ERROR);
 		}
 ]]></find>
-				<action type="before-add"><![CDATA[        // MOD start: Mobile/SEO style
-        }
-        // MOD end: Mobile/SEO style
+				<action type="before-add"><![CDATA[		// MOD start: Mobile/SEO style
+		}
+		if(defined('MOBILE_DEVICE_OFF'))
+		{
+			global $SID, $_EXTRA_URL;
+			$SID .= '&amp;nomobile=1';
+			$_EXTRA_URL[] = 'nomobile=1';
+		}
+		// MOD end: Mobile/SEO style
+
 ]]></action>
 			</edit>
 			<edit>
 				<find><![CDATA[	/**
 	* More advanced language substitution
 ]]></find>
-				<action type="before-add"><![CDATA[    // MOD start: Mobile/SEO style
+				<action type="before-add"><![CDATA[	// MOD start: Mobile/SEO style
 	/**
 	* Check for mobile/seo, get style
 	*/
 	function check_mobile($sql, $style)
 	{
-        $browser = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
-        if (!empty($this->data['is_bot']) || strpos($browser, 'Mobile') !== false || strpos($browser, 'Symbian') !== false || strpos($browser, 'Opera M') !== false || strpos($browser, 'Android') !== false || stripos($browser, 'HTC_') !== false || strpos($browser, 'Fennec/') !== false || stripos($browser, 'Blackberry') !== false || strpos($browser, 'Windows Phone') !== false || strpos($browser, 'WP7') !== false || strpos($browser, 'WP8') !== false)
-        {
-            global $db;
-			// Important: change number 0 below to ID of Artodia:Mobile style.
-			// If it is set to 0, script will automatically find style, but it will use extra time and resources.
-			$mobile_style_id = 0;
-			if($mobile_style_id)
+		$browser = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+		if (empty($this->data['is_bot']) && strpos($browser, 'Mobile') === false && strpos($browser, 'Symbian') === false && strpos($browser, 'Opera M') === false && strpos($browser, 'Android') === false && stripos($browser, 'HTC_') === false && strpos($browser, 'Fennec/') === false && stripos($browser, 'Blackberry') === false && strpos($browser, 'Windows Phone') === false && strpos($browser, 'WP7') === false && strpos($browser, 'WP8') === false)
+		{
+				return true;
+		}
+		define('MOBILE_DEVICE', true);
+		if(!empty($_REQUEST['nomobile']))
+		{
+			define('MOBILE_DEVICE_OFF', true);
+			return true;
+		}
+		global $db;
+		// Important: change number 0 below to ID of Artodia:Mobile style.
+		// If it is set to 0, script will automatically find style, but it will use extra time and resources.
+		$mobile_style_id = 0;
+		if($mobile_style_id)
+		{
+			$sql2 = str_replace('s.style_id = ' . $style, 's.style_id = ' . $mobile_style_id, $sql);
+			$result = $db->sql_query($sql2, 3600);
+			$this->theme = $db->sql_fetchrow($result);
+			$db->sql_freeresult($result);
+			if($this->theme !== false)
 			{
-			    $sql2 = str_replace('s.style_id = ' . $style, 's.style_id = ' . $mobile_style_id, $sql);
-                $result = $db->sql_query($sql2, 3600);
-                $this->theme = $db->sql_fetchrow($result);
-                $db->sql_freeresult($result);
-                if($this->theme !== false)
-                {
-                	define('MOBILE_STYLE', true);
-                    return false;
-                }
+				define('MOBILE_STYLE', true);
+				return false;
 			}
-			// try to find style
-			global $phpbb_root_path;
-			$files = scandir($phpbb_root_path . 'styles');
-			$base = $phpbb_root_path . 'styles/';
-			for($i=0; $i<count($files); $i++)
+		}
+		// try to find style
+		global $phpbb_root_path;
+		$files = scandir($phpbb_root_path . 'styles');
+		$base = $phpbb_root_path . 'styles/';
+		for($i=0; $i<count($files); $i++)
+		{
+			if($files[$i] != '.' && $files[$i] != '..' && is_dir($base . $files[$i]) && @file_exists($base . $files[$i] . '/style.cfg'))
 			{
-			    if($files[$i] != '.' && $files[$i] != '..' && is_dir($base . $files[$i]) && @file_exists($base . $files[$i] . '/style.cfg'))
-			    {
-			        // found directory with style
-			        $data = file_get_contents($base . $files[$i] . '/style.cfg');
-			        if(strpos($data, 'mobile = 1') !== false && ($pos = strpos($data, 'name = ')) !== false)
-			        {
-			            $list = explode("\n", substr($data, $pos + 7), 2);
-			            $name = trim($list[0]);
-			            // found style
-                        $sql2 = str_replace('s.style_id = ' . $style, 's.style_name = \'' . $db->sql_escape($name) . '\'', $sql);
-                        $result = $db->sql_query($sql2, 3600);
-                        $this->theme = $db->sql_fetchrow($result);
-                        $db->sql_freeresult($result);
-                        if($this->theme !== false)
-                        {
-		                	define('MOBILE_STYLE', true);
-                            return false;
-                        }
-			        }
-			    }
+				// found directory with style
+				$data = file_get_contents($base . $files[$i] . '/style.cfg');
+				if(strpos($data, 'mobile = 1') !== false && ($pos = strpos($data, 'name = ')) !== false)
+				{
+					$list = explode("\n", substr($data, $pos + 7), 2);
+					$name = trim($list[0]);
+					// found style
+					$sql2 = str_replace('s.style_id = ' . $style, 's.style_name = \'' . $db->sql_escape($name) . '\'', $sql);
+					$result = $db->sql_query($sql2, 3600);
+					$this->theme = $db->sql_fetchrow($result);
+					$db->sql_freeresult($result);
+					if($this->theme !== false)
+					{
+						define('MOBILE_STYLE', true);
+						return false;
+					}
+				}
 			}
-        }
-        return true;
+		}
+		return true;
 	}
-    // MOD end: Mobile/SEO style
+	// MOD end: Mobile/SEO style
+
 ]]></action>
 			</edit>
 		</open>
