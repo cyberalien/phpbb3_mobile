@@ -77,7 +77,7 @@
 		<ul class="topiclist forums">
 	<!-- ENDIF -->
 
-		<li class="row<!-- IF topicrow.S_UNREAD_TOPIC --> row-new<!-- ENDIF --><!-- IF topicrow.S_TOPIC_LOCKED --> locked<!-- ENDIF --> link" onclick="document.location.href='<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT -->{topicrow.U_NEWEST_POST}<!-- ELSE -->{topicrow.U_VIEW_TOPIC}<!-- ENDIF -->'; return false;">
+		<li class="row<!-- IF topicrow.S_UNREAD_TOPIC --> row-new<!-- ENDIF --><!-- IF topicrow.S_TOPIC_LOCKED --> locked<!-- ENDIF --><!-- IF topicrow.PAGINATION --> pages<!-- ENDIF --> link" onclick="document.location.href='<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT -->{topicrow.U_NEWEST_POST}<!-- ELSE -->{topicrow.U_VIEW_TOPIC}<!-- ENDIF -->'; return false;">
             <p><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
                 <!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}" class="newest">{L_NEW_POST}</a><!-- ENDIF -->
                 <!-- IF topicrow.PAGINATION --><span class="pages">{topicrow.PAGINATION}</span><!-- ENDIF -->
