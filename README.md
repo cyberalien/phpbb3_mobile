@@ -14,6 +14,13 @@
         $mobile_style_id = 0;
 and replace 0 with style id of this style
 
+## BRANCHES
+
+There are several branches that include different versions of mobile style:
+
+* master: prosilver style
+* iphone: iPhone layout (slightly modified prosilver)
+* elegant: "Elegant Mobile" style
 
 ## LICENSE
 
