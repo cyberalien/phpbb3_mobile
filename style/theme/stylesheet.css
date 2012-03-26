@@ -503,6 +503,7 @@ fieldset dt, .details dt {
 fieldset.fields1 dt {
     border-right-width: 0;
     width: 75px;
+    clear: left;
 }
 fieldset.fields2 dt, .details dt {
     border-right-width: 0;
