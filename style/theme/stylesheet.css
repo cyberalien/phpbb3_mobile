@@ -306,9 +306,11 @@ ul.forums > li.locked {
     border-color: #ccc; 
     background-image: none;
 }
-ul.forums > li.row-new { 
+ul.forums > li.row-new, ul.forums > li.pm-new { 
     background-image: url("{T_THEME_PATH}/images/link_new.png"); 
     border-color: #e9cad3;
+}
+ul.forums > li.row-new {
     border-width: 2px;
 }
 ul.forums > li:last-child { margin-bottom: 0; }
@@ -357,10 +359,10 @@ ul.forums > li a {
 ul.forums > li.locked a, ul.forums > li.locked a:visited {
     color: #888;
 }
-ul.forums > li.locked a:hover, ul.forums > li.row-new a, ul.forums > li.row-new a:visited {
+ul.forums > li.locked a:hover, ul.forums > li.row-new a, ul.forums > li.row-new a:visited, ul.forums > li.pm-new a.topictitle, ul.forums > li.pm-new a.topictitle:visited {
     color: #e02451;
 }
-ul.forums > li.row-new a:hover { color: #bc2a4d; }
+ul.forums > li.row-new a:hover, ul.forums > li.pm-new a.topictitle:hover { color: #bc2a4d; }
 ul.forums > li > p:first-child {
     font-size: 14px;
 }
