@@ -312,6 +312,36 @@ ul.forums > li.row-new {
     border-width: 2px;
 }
 ul.forums > li:last-child { margin-bottom: 0; }
+
+ul.forums > li.has-pagination {
+	margin-bottom: 0;
+	border-bottom-width: 0;
+	border-bottom-left-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	-moz-border-radius-bottomright: 0;
+	-webkit-border-bottom-right-radius: 0;
+}
+ul.forums > li.has-pagination > p:last-child {
+	margin-bottom: 0;
+	padding-bottom: 4px;
+	border-bottom: 1px dashed #ccc;
+}
+
+ul.forums > li.row-pagination {
+	margin-top: 0;
+	padding: 2px 4px 4px;
+	background-image: none;
+	border-top-width: 0;
+	border-top-left-radius: 0;
+	-moz-border-radius-topleft: 0;
+	-webkit-border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	-moz-border-radius-topright: 0;
+	-webkit-border-top-right-radius: 0;
+}
+
 ul.forums > li > p {
     color: #888;
     font-size: 11px;
