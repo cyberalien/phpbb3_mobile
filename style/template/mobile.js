@@ -169,7 +169,15 @@ var phpBBMobile = {
 			{
 				return;
 			}
+			var arrowUp = document.createElement('span'),
+				arrowDown = document.createElement('span');
+			arrowUp.className = 'arrow-up';
+			arrowUp.innerHTML = '&uarr;';
+			arrowDown.className = 'arrow-down';
+			arrowDown.innerHTML = '&darr;';
 			menuTrigger.setAttribute('href', 'javascript:void(0);');
+			menuTrigger.appendChild(arrowUp);
+			menuTrigger.appendChild(arrowDown);
 			phpBBMobile.setupMenu(element, menuTrigger, menuItem);
 		});
 	}
