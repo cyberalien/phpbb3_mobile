@@ -24,10 +24,10 @@
 <div id="page-header" class="nav-block gradient <!-- IF S_DISPLAY_SEARCH --><!-- IF PAGE_NUMBER and PAGINATION -->menu-3<!-- ELSE -->menu-2<!-- ENDIF --><!-- ELSEIF PAGE_NUMBER and PAGINATION -->menu-2<!-- ELSE -->menu-1<!-- ENDIF -->">
     <ul id="page-header-start">
         <li><a href="javascript:void(0);" class="menu-link back"><span>{L_INDEX}</span></a>
-            <ul class="sub sub-nojs">
-                <li><a href="{U_INDEX}">{L_INDEX}</a></li>
+            <ul class="sub sub-nojs" itemscope="itemscope">
+                <li><a href="{U_INDEX}" itemprop="url" rel="up">{L_INDEX}</a></li>
                 <!-- BEGIN navlinks --> 
-                    <li><a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a></li>
+                    <li><a href="{navlinks.U_VIEW_FORUM}" itemprop="url" rel="up">{navlinks.FORUM_NAME}</a></li>
                 <!-- END navlinks -->   
             </ul>
         </li>
