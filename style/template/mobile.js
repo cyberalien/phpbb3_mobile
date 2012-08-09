@@ -1,3 +1,11 @@
+/*
+	JavaScript for "Artodia: Mobile" phpBB style.
+	Created by Vjacheslav Trushkin (Arty)
+
+	This script resizes large images and adds JS events to drop down menus.
+
+	Check http://www.phpbbmobile.com/ for latest version.
+*/
 var phpBBMobile = {
 	
 	// Apply function to each item

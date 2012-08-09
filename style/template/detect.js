@@ -1,3 +1,9 @@
+/*
+	Mobile device detection JavaScript for "Artodia: Mobile" phpBB style.
+	Created by Vjacheslav Trushkin (Arty)
+
+	Check http://www.phpbbmobile.com/ for latest version.
+*/
 (function() {
 
 	// Check if variables are set
