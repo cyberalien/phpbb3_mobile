@@ -1,18 +1,15 @@
 (function() {
 
-	// Check if variable is set
+	// Check if variables are set
 	if (typeof(phpBBMobileStyle) != 'boolean' || typeof(phpBBMobileVar) != 'string')
 	{
 		return;
 	}
 	
-	// Set viewport
-	// document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0"/>');
-	
-	// Add CSS
+	// Add CSS for test item
 	document.write('<style> .mobileDeviceTest { float: left; } @media only screen and (max-device-width: 600px) { .mobileDeviceTest { float: right; } } </style>');
 
-	// Check browser resolution
+	// Execute function when document has loaded
 	document.addEventListener('DOMContentLoaded', function() {
 	
 		function redirect(mode)
@@ -25,7 +22,7 @@
 			catch (e) {}
 		}
 	
-		// Create test item
+		// Create test element
 		var testItem = document.createElement('div');
 		testItem.className = 'mobileDeviceTest';
 		testItem.style.display = 'none';
@@ -45,6 +42,7 @@
 			return;
 		}
 
+		// Check if browser has applied desktop or mobile style
 		switch (style)
 		{
 			case 'left':
