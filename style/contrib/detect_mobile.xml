@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="http://cdn.artodia.com/phpbb/modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[Mobile/SEO automatic switch]]></title>
+		<description lang="en"><![CDATA[Automatically switches style to "Artodia: Mobile" for mobile devices.]]></description>
+		<author-group>
+			<author>
+				<username><![CDATA[Arty]]></username>
+			</author>
+		</author-group>
+		<mod-version>3.0</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>60</time>
+			<target-version>3.0.11</target-version>
+		</installation>
+	</header>
+	<action-group>
+		<copy>
+			<file from="mobile.php" to="includes/mobile.php"/>
+		</copy>
+		<open src="includes/session.php">
+			<edit>
+				<find><![CDATA[		// Call phpbb_user_session_handler() in case external application want to "bend" some variables or replace classes...
+		// After calling it we continue script execution...
+		phpbb_user_session_handler();
+]]></find>
+				<action type="before-add"><![CDATA[		// Mod: phpBB Mobile start
+		include_once($phpbb_root_path . 'includes/mobile.' . $phpEx);
+		phpbb_mobile::setup('art_mobile');	// Change first parameter to correct directory name of mobile style
+		// Mod: phpBB Mobile end
+
+]]></action>
+			</edit>
+		</open>
+		<diy-instructions lang="en"><![CDATA[When adding mod code to includes/session.php, change value in phpbb_mobile::setup call to correct path to mobile style.]]></diy-instructions>
+	</action-group>
+</mod>
