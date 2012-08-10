@@ -658,3 +658,15 @@ dl.faq dt {
     font-size: 14px;
 }
 dl.faq dd { margin: 2px 4px; }
+
+.mobile-style-switch a {
+	display: inline-block;
+	padding: 3px 8px 4px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	text-decoration: none !important;
+    background: #12a2ea;
+    color: #fff !important;
+}
