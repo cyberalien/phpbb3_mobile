@@ -19,14 +19,14 @@ var phpBBMobile = {
 		}
 		return items;
 	},
-	
+
 	// Check if element has certain class
 	hasClass: function(element, className)
 	{
 		var match = ' ' + className + ' ';
 		return (element.className && (' ' + element.className + ' ').indexOf(match) > -1);
 	},
-	
+
 	// Add class to element
 	addClass: function(element, className)
 	{
@@ -37,7 +37,7 @@ var phpBBMobile = {
 		element.className += ((element.className.length > 0) ? ' ' : '') + className;
 		return element.className;
 	},
-	
+
 	// Remove class from element
 	removeClass: function(element, className)
 	{
@@ -48,7 +48,7 @@ var phpBBMobile = {
 		element.className = (element.className == className) ? '' : (' ' + element.className + ' ').replace(' ' + className + ' ', ' ').replace(/^\s+/, '').replace(/\s+$/, '');
 		return element.className;
 	},
-	
+
 	// Toggle class
 	toggleClass: function(element, className)
 	{
@@ -58,17 +58,17 @@ var phpBBMobile = {
 		}
 		return phpBBMobile.addClass(element, className);
 	},
-	
+
 	// Check image size
 	checkImage: function()
 	{
-	    var maxWidth = Math.floor(this.parentNode.clientWidth - 10);
-	    if (this.width > maxWidth)
-	    {
-	    	phpBBMobile.resizeImage.call(this, maxWidth);
+		var maxWidth = Math.floor(this.parentNode.clientWidth - 10);
+		if (this.width > maxWidth)
+		{
+			phpBBMobile.resizeImage.call(this, maxWidth);
 		}
 	},
-	
+
 	// Resize image
 	resizeImage: function(width)
 	{
@@ -76,20 +76,20 @@ var phpBBMobile = {
 		wrapper.className = 'zoom-container';
 		wrapper.appendChild(this.cloneNode(true));
 		this.parentNode.replaceChild(wrapper, this);
-		
+
 		var img = wrapper.firstChild;
-        img.setAttribute('data-max-width', width);
-        img.style.maxWidth = width + 'px';
+		img.setAttribute('data-max-width', width);
+		img.style.maxWidth = width + 'px';
 		img.style.cursor = 'pointer';
 		phpBBMobile.addClass(img, 'zoom');
 		img.addEventListener('click', phpBBMobile.imageClicked);
-		
+
 		var span = document.createElement('span');
 		span.className = 'zoom-image';
 		wrapper.appendChild(span);
 		span.addEventListener('click', phpBBMobile.zoomClicked);
 	},
-	
+
 	// Image was clicked
 	imageClicked: function()
 	{
@@ -102,14 +102,14 @@ var phpBBMobile = {
 		phpBBMobile.addClass(this, 'zoomed-in');
 		this.style.maxWidth = '';
 	},
-	
+
 	// Zoom icon near image was clicked
 	zoomClicked: function(event)
 	{
 		phpBBMobile.imageClicked.apply(this.parentNode.querySelector('img'), arguments);
 		event.stopPropagation();
 	},
-	
+
 	// Hide all popup menus
 	hideMenus: function()
 	{
@@ -120,7 +120,7 @@ var phpBBMobile = {
 			phpBBMobile.removeClass(this, 'menu-hover');
 		});
 	},
-	
+
 	// Popup menu
 	setupMenu: function(element, menuTrigger, menuItem)
 	{
@@ -143,7 +143,7 @@ var phpBBMobile = {
 		listItem.appendChild(closeLink);
 		menuItem.appendChild(listItem);
 	},
-	
+
 	// Initialise stuff
 	__construct: function() 
 	{
@@ -152,12 +152,12 @@ var phpBBMobile = {
 			phpBBMobile.addClass(this, 'hasjs');
 			phpBBMobile.removeClass(this, 'nojs');
 		});
-		
+
 		// Mark all images inside links as non-resizable
 		phpBBMobile.each('a img', function() {
 			phpBBMobile.addClass(this, 'non-resizable');
 		});
-		
+
 		// Resize all images inside posts
 		phpBBMobile.each('.postbody img', function() {
 			if (phpBBMobile.hasClass(this, 'non-resizable'))
@@ -173,7 +173,7 @@ var phpBBMobile = {
 				this.addEventListener('load', phpBBMobile.checkImage, false);
 			}
 		});
-		
+
 		// Set up header/footer popups
 		phpBBMobile.each('#page-header-start > li, #page-header-menu > li, #page-footer-menu > li', function() {
 			var element = this,
@@ -185,7 +185,7 @@ var phpBBMobile = {
 			}
 			phpBBMobile.setupMenu(element, menuTrigger, menuItem);
 		});
-		
+
 		// Set up tabs and user profile popups
 		phpBBMobile.each('.post-author, .tabs-list', function() {
 			var element = this,
