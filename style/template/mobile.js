@@ -72,11 +72,22 @@ var phpBBMobile = {
 	// Resize image
 	resizeImage: function(width)
 	{
-        this.setAttribute('data-max-width', width);
-        this.style.maxWidth = width + 'px';
-		this.style.cursor = 'pointer';
-		phpBBMobile.addClass(this, 'zoom');
-		this.addEventListener('click', phpBBMobile.imageClicked);
+		var wrapper = document.createElement('span');
+		wrapper.className = 'zoom-container';
+		wrapper.appendChild(this.cloneNode(true));
+		this.parentNode.replaceChild(wrapper, this);
+		
+		var img = wrapper.firstChild;
+        img.setAttribute('data-max-width', width);
+        img.style.maxWidth = width + 'px';
+		img.style.cursor = 'pointer';
+		phpBBMobile.addClass(img, 'zoom');
+		img.addEventListener('click', phpBBMobile.imageClicked);
+		
+		var span = document.createElement('span');
+		span.className = 'zoom-image';
+		wrapper.appendChild(span);
+		span.addEventListener('click', phpBBMobile.zoomClicked);
 	},
 	
 	// Image was clicked
@@ -90,6 +101,13 @@ var phpBBMobile = {
 		}
 		phpBBMobile.addClass(this, 'zoomed-in');
 		this.style.maxWidth = '';
+	},
+	
+	// Zoom icon near image was clicked
+	zoomClicked: function(event)
+	{
+		phpBBMobile.imageClicked.apply(this.parentNode.querySelector('img'), arguments);
+		event.stopPropagation();
 	},
 	
 	// Hide all popup menus

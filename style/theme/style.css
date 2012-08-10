@@ -37,6 +37,8 @@ h2, h3 {
     text-shadow: none;
 }
 
+img { display: inline-block; }
+
 /* 
     header / footer
 */
@@ -669,4 +671,24 @@ dl.faq dd { margin: 2px 4px; }
 	text-decoration: none !important;
     background: #12a2ea;
     color: #fff !important;
+}
+
+span.zoom-container {
+	position: relative;
+	display: inline-block;
+	padding-top: 30px;
+}
+span.zoom-image { display: none; }
+img.zoom + span.zoom-image {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	background: url("images/zoom.png") 0 0 no-repeat;
+	cursor: pointer;
+}
+img.zoom.zoomed-in + span.zoom-image { 
+	background-position: 0 -30px; 
 }
