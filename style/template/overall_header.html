@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}" xml:lang="{S_USER_LANG}">
+<html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}" xml:lang="{S_USER_LANG}" class="nojs">
 <head>
 <meta http-equiv="content-type" content="text/html; charset={S_CONTENT_ENCODING}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
@@ -15,7 +15,7 @@
 	      The phpBB Group is not responsible for the content of this page and forum. For more information
 	      about phpBB please visit http://www.phpbb.com
 -->
-<link href="{T_STYLESHEET_LINK}" rel="stylesheet" type="text/css" />
+<link href="{T_THEME_PATH}/style.css" rel="stylesheet" type="text/css" />
 <script src="{T_TEMPLATE_PATH}/mobile.js"></script>
 </head>
 
@@ -24,17 +24,17 @@
 <div id="page-header" class="nav-block gradient <!-- IF S_DISPLAY_SEARCH --><!-- IF PAGE_NUMBER and PAGINATION -->menu-3<!-- ELSE -->menu-2<!-- ENDIF --><!-- ELSEIF PAGE_NUMBER and PAGINATION -->menu-2<!-- ELSE -->menu-1<!-- ENDIF -->">
     <ul id="page-header-start">
         <li><a href="javascript:void(0);" class="menu-link back"><span>{L_INDEX}</span></a>
-            <ul class="sub sub-nojs">
-                <li><a href="{U_INDEX}">{L_INDEX}</a></li>
+            <ul class="sub" itemscope="itemscope">
+                <li><a href="{U_INDEX}" itemprop="url" rel="up">{L_INDEX}</a></li>
                 <!-- BEGIN navlinks --> 
-                    <li><a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a></li>
+                    <li><a href="{navlinks.U_VIEW_FORUM}" itemprop="url" rel="up">{navlinks.FORUM_NAME}</a></li>
                 <!-- END navlinks -->   
             </ul>
         </li>
     </ul>
     <ul id="page-header-menu">
         <li><a href="javascript:void(0);" class="menu-link main"><span>{L_INDEX}</span></a>
-            <ul class="sub sub-nojs">
+            <ul class="sub">
     			<!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
                     <li><a href="{U_PROFILE}">{L_PROFILE}</a></li>
                     <!-- IF S_DISPLAY_PM --><li><a href="{U_PRIVATEMSGS}">{PRIVATE_MESSAGE_INFO}</a></li><!-- ENDIF -->
@@ -50,7 +50,7 @@
         </li>
         <!-- IF S_DISPLAY_SEARCH -->
         <li><a href="javascript:void(0);" class="menu-link search"><span>{L_SEARCH_ADV}</span></a>
-            <ul class="sub sub-nojs">
+            <ul class="sub">
                 <li><a href="{U_SEARCH}">{L_SEARCH_ADV}</a></li>
                 <!-- IF not S_IS_BOT and S_USER_LOGGED_IN -->
                     <li><a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a></li>
@@ -64,7 +64,7 @@
         <!-- ENDIF -->
         <!-- IF PAGE_NUMBER and PAGINATION -->
         <li class="pages"><a href="javascript:void(0);" class="menu-link">#</a>
-            <ul class="sub sub-nojs">
+            <ul class="sub">
                 <li>{PAGE_NUMBER} &nbsp; {PAGINATION}</li>
     			<!-- IF PREVIOUS_PAGE --><li><a href="{PREVIOUS_PAGE}">{L_PREVIOUS}</a></li><!-- ENDIF -->
 			    <!-- IF NEXT_PAGE --><li><a href="{NEXT_PAGE}">{L_NEXT}</a></li><!-- ENDIF -->

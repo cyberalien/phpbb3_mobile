@@ -44,7 +44,7 @@
 	<div class="forums">
 		<ul class="topiclist forums">
 		<!-- BEGIN messagerow -->
-			<li class="row<!-- IF messagerow.PM_CLASS --> {messagerow.PM_CLASS}<!-- ENDIF -->">
+			<li class="row<!-- IF messagerow.PM_CLASS --> {messagerow.PM_CLASS}<!-- ENDIF --><!-- IF messagerow.S_PM_UNREAD --> pm-new<!-- ENDIF -->">
 			    <p><input type="checkbox" name="marked_msg_id[]" value="{messagerow.MESSAGE_ID}" />
 						<!-- IF messagerow.S_PM_DELETED -->
 							<a href="{messagerow.U_REMOVE_PM}" class="topictitle">{L_DELETE_MESSAGE}</a><br />

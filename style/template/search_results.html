@@ -27,11 +27,10 @@
 		<ul class="topiclist forums">
 
 		<!-- BEGIN searchresults -->
-			<li class="row link<!-- IF searchresults.S_UNREAD_TOPIC --> row-new<!-- ENDIF -->" onclick="document.location.href='<!-- IF searchresults.S_UNREAD_TOPIC -->{searchresults.U_NEWEST_POST}<!-- ELSE -->{searchresults.U_VIEW_TOPIC}<!-- ENDIF -->'; return false;">
+			<li class="row link<!-- IF searchresults.S_UNREAD_TOPIC --> row-new<!-- ENDIF --><!-- IF searchresults.PAGINATION --> has-pagination<!-- ENDIF -->" onclick="document.location.href='<!-- IF searchresults.S_UNREAD_TOPIC -->{searchresults.U_NEWEST_POST}<!-- ELSE -->{searchresults.U_VIEW_TOPIC}<!-- ENDIF -->'; return false;">
                 <p>
                     <a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a>
                     <!-- IF searchresults.S_UNREAD_TOPIC --><a href="{searchresults.U_NEWEST_POST}" class="newest">{L_NEW_POST}</a><!-- ENDIF -->
-                    <!-- IF searchresults.PAGINATION --><span class="pages">{searchresults.PAGINATION}</span><!-- ENDIF -->
                 </p>
                 <p>
                     {L_POST_BY_AUTHOR} {searchresults.TOPIC_AUTHOR}
@@ -42,6 +41,11 @@
                     {searchresults.LAST_POST_TIME}
                 </p>
 			</li>
+			<!-- IF searchresults.PAGINATION -->
+				<li class="row-pagination<!-- IF searchresults.S_UNREAD_TOPIC --> row-new<!-- ENDIF -->">
+					{L_GOTO_PAGE}: <span class="pages">{searchresults.PAGINATION}</span>
+				</li>
+			<!-- ENDIF -->
 		<!-- END searchresults -->
 		</ul>
 	</div>

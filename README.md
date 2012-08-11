@@ -11,8 +11,8 @@
 * Open contrib/detect_mobile.xml in browser, follow instructions to add automatic mobile device detection
 * In code that you have added to includes/session.php find this line:
 
-        $mobile_style_id = 0;
-and replace 0 with style id of this style
+        phpbb_mobile::setup('art_mobile');
+and replace art_mobile with correct directory name of this style
 
 ## BRANCHES
 
