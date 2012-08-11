@@ -202,7 +202,7 @@ class phpbb_mobile
 	protected static function set_cookie($value, $long = true)
 	{
 		global $config;
-		$cookietime = ($long) ? time() + (($config['max_autologin_time']) ? 86400 * (int) $config['max_autologin_time'] : 31536000) : 0;
+		$cookietime = ($long || empty($_SERVER['HTTP_DNT'])) ? time() + (($config['max_autologin_time']) ? 86400 * (int) $config['max_autologin_time'] : 31536000) : 0;
 		$name_data = rawurlencode(self::$cookie_var) . '=' . rawurlencode($value);
 		if ($cookietime)
 		{
