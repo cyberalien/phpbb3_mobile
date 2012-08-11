@@ -76,6 +76,10 @@ class phpbb_mobile
 			{
 				self::$mobile_style_path = $style_path;
 			}
+			elseif (is_int($style_path) && $style_path > 0)
+			{
+				self::$mobile_style_id = $style_path;
+			}
 			self::$mobile_mode = self::get_mode();
 		}
 
@@ -361,13 +365,24 @@ class phpbb_mobile
 	*
 	* @param int $id Style id
 	*
-	* @return bool True if mobile style exists
+	* @return string|bool Path to style if mobile style exists, false on error
 	*/
 	protected static function check_style_id($id)
 	{
-		//@TODO
+		global $db;
+		$sql = 'SELECT t.template_path
+			FROM ' . STYLES_TABLE . ' s, ' . STYLES_TEMPLATE_TABLE . " t
+			WHERE s.style_id = $id
+				AND t.template_id = s.template_id";
+		$result = $db->sql_query($sql);
+		$row = $db->sql_fetchrow($result);
+		$db->sql_freeresult($result);
 
-		return false;
+		if ($row === false || !self::check_style_path($row['template_path']))
+		{
+			return false;
+		}
+		return $row['template_path'];
 	}
 
 	/**
