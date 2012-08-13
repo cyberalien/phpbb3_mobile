@@ -370,6 +370,7 @@ class phpbb_mobile
 	protected static function check_style_id($id)
 	{
 		global $db;
+		$id = (int) $id;
 		$sql = 'SELECT t.template_path
 			FROM ' . STYLES_TABLE . ' s, ' . STYLES_TEMPLATE_TABLE . " t
 			WHERE s.style_id = $id
