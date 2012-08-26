@@ -43,7 +43,7 @@
 		<dt><label for="cur_password">{L_CURRENT_PASSWORD}:</label></dt>
 		<dd><input type="password" name="cur_password" id="cur_password" maxlength="255" value="{CUR_PASSWORD}" class="inputbox" title="{L_CURRENT_PASSWORD}" /></dd>
 	</dl>
-	<p class="explain">{L_CURRENT_PASSWORD_EXPLAIN}</p>
+	<p class="explain"><!-- IF S_CHANGE_PASSWORD -->{L_CURRENT_CHANGE_PASSWORD_EXPLAIN}<!-- ELSE -->{L_CURRENT_PASSWORD_EXPLAIN}<!-- ENDIF --></p>
 	</fieldset>
 
 	{S_HIDDEN_FIELDS}<input type="reset" value="{L_RESET}" name="reset" class="button2" />&nbsp; 
