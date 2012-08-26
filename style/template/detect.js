@@ -13,7 +13,7 @@
 	}
 	
 	// Add CSS for test item
-	document.write('<style> .mobileDeviceTest { float: left; } @media only screen and (max-device-width: 600px) { .mobileDeviceTest { float: right; } } </style>');
+	document.write('<style> .mobileDeviceTest { float: left; } @media only screen and (max-device-width: 720px) { .mobileDeviceTest { float: right; } } @media only screen and (max-device-height: 720px) { .mobileDeviceTest { float: right; } } </style>');
 
 	// Execute function when document has loaded
 	document.addEventListener('DOMContentLoaded', function() {
