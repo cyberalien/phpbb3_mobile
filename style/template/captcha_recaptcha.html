@@ -11,7 +11,8 @@
 <!-- IF S_RECAPTCHA_AVAILABLE -->
 	<dl>
 	<dt><label>{L_CONFIRM_CODE}</label>:<br /><span>{L_RECAPTCHA_EXPLAIN}</span></dt>
-	<dd>
+	</dl>
+	<div>
 		<script type="text/javascript">
 		// <![CDATA[
 		var RecaptchaOptions = {
@@ -37,8 +38,7 @@
 		</div>
 		</noscript>
 
-	</dd>
-	</dl>
+	</div>
 <!-- ELSE -->
 {L_RECAPTCHA_NOT_AVAILABLE}
 <!-- ENDIF -->
