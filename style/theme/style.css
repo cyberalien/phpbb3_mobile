@@ -608,6 +608,10 @@ p.explain {
     font-size: 11px;
 }
 
+select {
+	max-width: 250px;
+}
+
 /*
     Table
 */
