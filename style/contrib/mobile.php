@@ -479,6 +479,11 @@ class phpbb_mobile
 	*/
 	public static function template_footer($template)
 	{
+		if (defined('MOBILE_STYLE') && self::$is_bot)
+		{
+			return '';
+		}
+
 		$link = '';
 		switch (self::$mobile_mode)
 		{
@@ -518,6 +523,11 @@ class phpbb_mobile
 	*/
 	public static function template_header($template)
 	{
+		if (defined('MOBILE_STYLE') && self::$is_bot)
+		{
+			return '';
+		}
+
 		$link = '';
 		switch (self::$mobile_mode)
 		{
@@ -560,6 +570,11 @@ class phpbb_mobile
 	*/
 	protected static function include_js($template)
 	{
+		if (defined('MOBILE_STYLE') && self::$is_bot)
+		{
+			return;
+		}
+
 		if (count($_POST) || isset($_GET[self::$mobile_var]))
 		{
 			// Do not redirect on forms or when URL has mode
