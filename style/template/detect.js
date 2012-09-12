@@ -45,8 +45,10 @@
 		}
 		else
 		{
+			testItem.parentNode.removeChild(testItem);
 			return;
 		}
+		testItem.parentNode.removeChild(testItem);
 
 		// Check if browser has applied desktop or mobile style
 		switch (style)
