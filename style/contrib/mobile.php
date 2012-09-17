@@ -466,6 +466,14 @@ class phpbb_mobile
 				return '';
 		}
 		$link = $template->_rootref['U_INDEX'];
+		if (!empty($template->_rootref['U_VIEW_TOPIC']))
+		{
+			$link = $template->_rootref['U_VIEW_TOPIC'];
+		}
+		elseif (!empty($template->_tpldata['navlinks']))
+		{
+			$link = $template->_tpldata['navlinks'][count($template->_tpldata['navlinks']) - 1]['U_VIEW_FORUM'];
+		}
 		$link .= (strpos($link, '?') === false ? '?' : '&amp;') . self::$mobile_var . '=' . $mode;
 		return '<a href="' . $link . '">' . $text . '</a>';
 	}
