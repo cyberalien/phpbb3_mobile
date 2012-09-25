@@ -601,7 +601,7 @@ class phpbb_mobile
 			return;
 		}
 
-		$template->_rootref['META'] = (isset($template->_rootref['META']) ? $template->_rootref['META'] : '') . '<script> var phpBBMobileStyle = ' . (defined('MOBILE_STYLE') ? 'true' : 'false') . ', phpBBMobileVar = \'' . addslashes(self::$mobile_var) . '\'; </script><script src="' . htmlspecialchars($script) . '?t=' . @filemtime($script) . '"></script>';
+		$template->_rootref['META'] = (isset($template->_rootref['META']) ? $template->_rootref['META'] : '') . '<script style="text/javascript"> var phpBBMobileStyle = ' . (defined('MOBILE_STYLE') ? 'true' : 'false') . ', phpBBMobileVar = \'' . addslashes(self::$mobile_var) . '\'; </script><script type="text/javascript" src="' . htmlspecialchars($script) . '?t=' . @filemtime($script) . '"></script>';
 	}
 }
 
