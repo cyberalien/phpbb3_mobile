@@ -13,54 +13,54 @@
 
 if (!defined('IN_PHPBB'))
 {
-	exit;
+    exit;
 }
 
 /**
-* Mobile style class
-*/
+ * Mobile style class
+ */
 class phpbb_mobile
 {
-	/**
-	* Mobile style path.
-	* Change it to correct string to make script locate mobile style faster.
-	* Alternatively you can define 'MOBILE_STYLE_PATH' in includes/constants.php or config.php
-	*
-	* @var string|bool
-	*/
-	public static $mobile_style_path = false;
+    /**
+     * Mobile style path.
+     * Change it to correct string to make script locate mobile style faster.
+     * Alternatively you can define 'MOBILE_STYLE_PATH' in includes/constants.php or config.php
+     *
+     * @var string|bool
+     */
+    public static $mobile_style_path = false;
 
-	/**
-	* Mobile style ID, if style is installed.
-	* Change it to correct string to make script locate mobile style faster.
-	* Alternatively you can define 'MOBILE_STYLE_ID' in includes/constants.php or config.php
-	*
-	* If mobile style path is set, this variable will be ignored
-	*
-	* @var int
-	*/
-	public static $mobile_style_id = 0;
-	
-	/**
-	* True if mobile style should be used for search engines
-	*
-	* @var bool
-	*/
-	public static $mobile_seo = true;
+    /**
+     * Mobile style ID, if style is installed.
+     * Change it to correct string to make script locate mobile style faster.
+     * Alternatively you can define 'MOBILE_STYLE_ID' in includes/constants.php or config.php
+     *
+     * If mobile style path is set, this variable will be ignored
+     *
+     * @var int
+     */
+    public static $mobile_style_id = 0;
 
-	/**
-	* @var bool
-	*/
-	protected static $mobile_mode = false;
-	protected static $mobile_var = 'mobile';
-	protected static $cookie_var = false;
-	protected static $is_bot = false;
+    /**
+     * True if mobile style should be used for search engines
+     *
+     * @var bool
+     */
+    public static $mobile_seo = true;
 
-	/**
-	* Start mobile style setup
-	*
-	* @var string $style_path Path to mobile style, saved to $mobile_style_path
-	*/
+    /**
+     * @var bool
+     */
+    protected static $mobile_mode = false;
+    protected static $mobile_var = 'mobile';
+    protected static $cookie_var = false;
+    protected static $is_bot = false;
+
+    /**
+     * Start mobile style setup
+     *
+     * @param bool|string $style_path Path to mobile style, saved to $mobile_style_path
+     */
 	public static function setup($style_path = false)
 	{
 		global $user;
@@ -204,10 +204,7 @@ class phpbb_mobile
 		global $config;
 		$cookietime = ($long && empty($_SERVER['HTTP_DNT'])) ? time() + (($config['max_autologin_time']) ? 86400 * (int) $config['max_autologin_time'] : 31536000) : 0;
 		$name_data = rawurlencode(self::$cookie_var) . '=' . rawurlencode($value);
-		if ($cookietime)
-		{
-			$expire = gmdate('D, d-M-Y H:i:s \\G\\M\\T', $cookietime);
-		}
+        $expire = ($cookietime) ? gmdate('D, d-M-Y H:i:s \\G\\M\\T', $cookietime) : '';
 		$domain = (!$config['cookie_domain'] || $config['cookie_domain'] == 'localhost' || $config['cookie_domain'] == '127.0.0.1') ? '' : '; domain=' . $config['cookie_domain'];
 		header('Set-Cookie: ' . $name_data . (($cookietime) ? '; expires=' . $expire : '') . '; path=' . $config['cookie_path'] . $domain . ((!$config['cookie_secure']) ? '' : '; secure') . '; HttpOnly', false);
 	}
@@ -469,6 +466,14 @@ class phpbb_mobile
 				return '';
 		}
 		$link = $template->_rootref['U_INDEX'];
+		if (!empty($template->_rootref['U_VIEW_TOPIC']))
+		{
+			$link = $template->_rootref['U_VIEW_TOPIC'];
+		}
+		elseif (!empty($template->_tpldata['navlinks']))
+		{
+			$link = $template->_tpldata['navlinks'][count($template->_tpldata['navlinks']) - 1]['U_VIEW_FORUM'];
+		}
 		$link .= (strpos($link, '?') === false ? '?' : '&amp;') . self::$mobile_var . '=' . $mode;
 		return '<a href="' . $link . '">' . $text . '</a>';
 	}
@@ -482,6 +487,11 @@ class phpbb_mobile
 	*/
 	public static function template_footer($template)
 	{
+		if (defined('MOBILE_STYLE') && self::$is_bot)
+		{
+			return '';
+		}
+
 		$link = '';
 		switch (self::$mobile_mode)
 		{
@@ -521,6 +531,11 @@ class phpbb_mobile
 	*/
 	public static function template_header($template)
 	{
+		if (defined('MOBILE_STYLE') && self::$is_bot)
+		{
+			return '';
+		}
+
 		$link = '';
 		switch (self::$mobile_mode)
 		{
@@ -563,6 +578,11 @@ class phpbb_mobile
 	*/
 	protected static function include_js($template)
 	{
+		if (defined('MOBILE_STYLE') && self::$is_bot)
+		{
+			return;
+		}
+
 		if (count($_POST) || isset($_GET[self::$mobile_var]))
 		{
 			// Do not redirect on forms or when URL has mode
@@ -581,7 +601,7 @@ class phpbb_mobile
 			return;
 		}
 
-		$template->_rootref['META'] = (isset($template->_rootref['META']) ? $template->_rootref['META'] : '') . '<script> var phpBBMobileStyle = ' . (defined('MOBILE_STYLE') ? 'true' : 'false') . ', phpBBMobileVar = \'' . addslashes(self::$mobile_var) . '\'; </script><script src="' . htmlspecialchars($script) . '"></script>';
+		$template->_rootref['META'] = (isset($template->_rootref['META']) ? $template->_rootref['META'] : '') . '<script style="text/javascript"> var phpBBMobileStyle = ' . (defined('MOBILE_STYLE') ? 'true' : 'false') . ', phpBBMobileVar = \'' . addslashes(self::$mobile_var) . '\'; </script><script type="text/javascript" src="' . htmlspecialchars($script) . '?t=' . @filemtime($script) . '"></script>';
 	}
 }
 
@@ -626,5 +646,4 @@ class mobile_template extends template
 			$this->$var = $template->$var;
 		}
 	}
-	
 }

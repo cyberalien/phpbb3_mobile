@@ -196,7 +196,10 @@ var phpBBMobile = {
 				return;
 			}
 			menuTrigger.setAttribute('href', 'javascript:void(0);');
-			menuTrigger.innerHTML += '<span class="arrow-up">&uarr;</span><span class="arrow-down">&darr;</span>';
+			if (this.className.indexOf('settings') < 0)
+			{
+				menuTrigger.innerHTML += '<span class="arrow-up">&uarr;</span><span class="arrow-down">&darr;</span>';
+			}
 			phpBBMobile.setupMenu(element, menuTrigger, menuItem);
 		});
 	}
