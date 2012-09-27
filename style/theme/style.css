@@ -221,6 +221,16 @@ ul.sub li a:hover {
 .nav-block .menu-link.main { background-position: -42px 50%; }
 .nav-block .menu-link.search { background-position: -92px 50%; }
 
+.operaMini .nav-block .menu-link.back { background-image: url("images/menu_up.png"); }
+.operaMini .nav-block .menu-link.main { background-image: url("images/menu_main.png"); }
+.operaMini .nav-block .menu-link.search { background-image: url("images/menu_search.png"); }
+.operaMini .nav-block .menu-link.back,
+.operaMini .nav-block .menu-link.main,
+.operaMini .nav-block .menu-link.search {
+	background-position: 0 0;
+	background-size: auto auto;
+}
+
 .pages .menu-link { 
     padding-top: 6px;
     height: 24px;
@@ -328,6 +338,10 @@ ul.forums > li:after, .search .post-details:after {
 	background: url("images/link_sprite.png") 0 50% no-repeat;
 	background-size: 40px 16px;
 }
+.operaMini ul.forums > li:after, .operaMini .search .post-details:after {
+    background: url("images/link.png") right 50% no-repeat;
+    background-size: auto auto;
+}
 
 ul.forums > li.locked { 
     border-color: #ccc; 
@@ -340,6 +354,9 @@ ul.forums > li.row-new, ul.forums > li.pm-new {
 }
 ul.forums > li.row-new:after, ul.forums > li.pm-new:after { 
 	background-position: -20px 50%;
+}
+.operaMini ul.forums > li.row-new:after, .operaMini ul.forums > li.pm-new:after { 
+    background-image: url("images/link_new.png"); 
 }
 
 ul.forums > li.row-new {

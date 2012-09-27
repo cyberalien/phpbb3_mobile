@@ -151,6 +151,10 @@ var phpBBMobile = {
 		phpBBMobile.each('html', function() {
 			phpBBMobile.addClass(this, 'hasjs');
 			phpBBMobile.removeClass(this, 'nojs');
+			if (navigator && navigator.userAgent.indexOf('Opera Mini') > 0)
+			{
+				phpBBMobile.addClass(this, 'operaMini');
+			}
 		});
 
 		// Mark all images inside links as non-resizable
