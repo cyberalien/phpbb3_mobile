@@ -454,6 +454,12 @@ span.replies.empty { background-color: #ccc; }
 	background-repeat: no-repeat;
 	background-position: -50px 50%;
 }
+.operaMini .post-author.settings > a
+{
+    background-image: url("images/menu_main.png");
+    background-position: 50% 50%;
+    background-size: auto auto;
+}
 .post-author .sub, .tabs-list .sub { 
     display: none;
     top: 30px;
