@@ -220,7 +220,7 @@ ul.sub li a:hover {
 .operaMini .nav-block .menu-link.back,
 .operaMini .nav-block .menu-link.main,
 .operaMini .nav-block .menu-link.search {
-	background-position: 0 0;
+	background-position: 50% 50%;
 	background-size: auto auto;
 }
 
@@ -345,7 +345,8 @@ ul.forums > li.row-new:after, ul.forums > li.pm-new:after {
 	background-position: -20px 50%;
 }
 .operaMini ul.forums > li.row-new:after, .operaMini ul.forums > li.pm-new:after { 
-    background-image: url("images/link_new.png"); 
+    background-image: url("images/link_new.png");
+    background-position: right 50%;
 }
 
 ul.forums > li:last-child { margin-bottom: 0; }
