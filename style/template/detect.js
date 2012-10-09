@@ -16,7 +16,7 @@
 	document.write('<style> .mobileDeviceTest { float: left; } @media only screen and (max-device-width: 720px) { .mobileDeviceTest { float: right; } } @media only screen and (max-device-height: 720px) { .mobileDeviceTest { float: right; } } </style>');
 
 	// Execute function when document has loaded
-	document.addEventListener('DOMContentLoaded', function() {
+	return (document.addEventListener) ? document.addEventListener('DOMContentLoaded', function() {
 	
 		function redirect(mode)
 		{
@@ -35,7 +35,7 @@
 		document.body.appendChild(testItem);
 		
 		// Get computed style
-		if (testItem.currentStyle)
+		if (typeof (testItem.currentStyle) == 'function')
 		{
 			var style = testItem.currentStyle('float');
 		}
@@ -66,6 +66,6 @@
 				}
 		}
 
-	}, false);
+	}, false) : false;
 
 })();
