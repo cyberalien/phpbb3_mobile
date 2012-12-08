@@ -47,6 +47,13 @@ class phpbb_mobile
      * @var bool
      */
     public static $mobile_seo = true;
+    
+    /**
+     * True if link to switch to mobile style should be shown for desktop browsers
+     *
+     * @var bool
+     */
+    public static $always_show_link = true;
 
     /**
      * @var bool
@@ -55,6 +62,7 @@ class phpbb_mobile
     protected static $mobile_var = 'mobile';
     protected static $cookie_var = false;
     protected static $is_bot = false;
+    protected static $is_desktop = false;
 
     /**
      * Start mobile style setup
@@ -95,6 +103,7 @@ class phpbb_mobile
 			$user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 			if (!self::is_mobile_browser($user_agent))
 			{
+				self::$is_desktop = true;
 				return;
 			}
 		}
@@ -508,7 +517,7 @@ class phpbb_mobile
 				break;
 			
 			case '':
-				if (!defined('MOBILE_STYLE'))
+				if (!defined('MOBILE_STYLE') && (self::$always_show_link || !self::$is_desktop))
 				{
 					// Detected desktop style
 					$link = self::create_link($template, 'mobile', 'switch_mobile');
