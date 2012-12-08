@@ -7,7 +7,7 @@
 * See detect_mobile.xml for mod installation instructions.
 * Check http://www.phpbbmobile.com/ for latest version.
 *
-* @version 3.0
+* @version 3.2
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 */
 
