@@ -557,7 +557,7 @@ class phpbb_mobile
 			
 			case '':
 				self::include_js($template);
-				if (defined('MOBILE_STYLE'))
+				if (defined('MOBILE_STYLE') && !isset($_COOKIE[self::$cookie_var]))
 				{
 					// Detected mobile style
 					$link = self::create_link($template, 'desktop', 'switch_full');
