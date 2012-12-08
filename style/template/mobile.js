@@ -7,6 +7,20 @@
 	Check http://www.phpbbmobile.com/ for latest version.
 */
 var phpBBMobile = {
+
+	/*
+		Configuration
+	*/
+	
+	// Resize images
+	opResizeImages: true,
+	
+	// Resize images inside links (ignored if previous option is false)
+	opResizeImagesInLinks: true,
+	
+	/*
+		Functions
+	*/
 	
 	// Apply function to each item
 	each: function(selector, callback)
@@ -58,11 +72,93 @@ var phpBBMobile = {
 		}
 		return phpBBMobile.addClass(element, className);
 	},
+	
+	// Get computed style
+	getStyle: function(item, prop)
+	{
+		if (typeof (item.currentStyle) == 'function')
+		{
+			return item.currentStyle(prop);
+		}
+		else if (window.getComputedStyle)
+		{
+			return document.defaultView.getComputedStyle(item, null).getPropertyValue(prop);
+		}
+		return false;
+	},
+	
+	// Get left+right sides
+	getSidesStyle: function(item, prop)
+	{
+		var left = phpBBMobile.getStyle(item, prop + '-left'),
+			right = phpBBMobile.getStyle(item, prop + '-right');
+		if (left === false || right === false)
+		{
+			return false;
+		}
+
+		left = parseInt(left);
+		right = parseInt(right);
+		
+		return (isNaN(left) || isNaN(right)) ? false : left + right;
+	},
+	
+	// Get element width
+	getClientWidth: function(item)
+	{
+		var diff = 0;
+
+		// Get display mode
+		switch (phpBBMobile.getStyle(item, 'display'))
+		{
+			case 'block':
+				var width = parseInt(item.clientWidth);
+				return (isNaN(width) || !width) ? false : width;
+				
+			case 'inline-block':
+				var margin = phpBBMobile.getSidesStyle(item, 'margin');
+				if (margin === false)
+				{
+					return false;
+				}
+				diff += margin;
+
+			case 'inline':
+				var padding = phpBBMobile.getSidesStyle(item, 'padding');
+				if (padding === false)
+				{
+					return false;
+				}
+				diff += padding;
+				
+				if (!item.parentNode)
+				{
+					return false;
+				}
+				
+				var width = phpBBMobile.getClientWidth(item.parentNode);
+				if (!width)
+				{
+					return false;
+				}
+				width += diff;
+				
+				return width;
+				
+			default:
+				return false;
+		}
+	},
 
 	// Check image size
 	checkImage: function()
 	{
-		var maxWidth = Math.floor(this.parentNode.clientWidth - 10);
+		var maxWidth = phpBBMobile.getClientWidth(this.parentNode);
+		if (maxWidth < 10)
+		{
+			return;
+		}
+		maxWidth -= 10;
 		if (this.width > maxWidth)
 		{
 			phpBBMobile.resizeImage.call(this, maxWidth);
@@ -157,26 +253,32 @@ var phpBBMobile = {
 			}
 		});
 
-		// Mark all images inside links as non-resizable
-		phpBBMobile.each('a img', function() {
-			phpBBMobile.addClass(this, 'non-resizable');
-		});
-
-		// Resize all images inside posts
-		phpBBMobile.each('.postbody img', function() {
-			if (phpBBMobile.hasClass(this, 'non-resizable'))
+		if (phpBBMobile.opResizeImages)
+		{
+			if (!phpBBMobile.opResizeImagesInLinks)
 			{
-				return;
+				// Mark all images inside links as non-resizable
+				phpBBMobile.each('a img', function() {
+					phpBBMobile.addClass(this, 'non-resizable');
+				});
 			}
-			if (this.complete)
-			{
-				phpBBMobile.checkImage.call(this);
-			}
-			else
-			{
-				this.addEventListener('load', phpBBMobile.checkImage, false);
-			}
-		});
+	
+			// Resize all images inside posts
+			phpBBMobile.each('.postbody img', function() {
+				if (phpBBMobile.hasClass(this, 'non-resizable'))
+				{
+					return;
+				}
+				if (this.complete)
+				{
+					phpBBMobile.checkImage.call(this);
+				}
+				else
+				{
+					this.addEventListener('load', phpBBMobile.checkImage, false);
+				}
+			});
+		}
 
 		// Set up header/footer popups
 		phpBBMobile.each('#page-header-start > li, #page-header-menu > li, #page-footer-menu > li', function() {
