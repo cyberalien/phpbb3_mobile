@@ -286,6 +286,10 @@ class phpbb_mobile
 					return $value;
 			}
 		}
+		else
+		{
+			self::set_cookie('');
+		}
 
 		return false;
 	}
