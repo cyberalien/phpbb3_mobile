@@ -484,7 +484,7 @@ class phpbb_mobile
 		{
 			$link = $template->_rootref['U_VIEW_TOPIC'];
 		}
-		elseif (!empty($template->_tpldata['navlinks']))
+		elseif (!empty($template->_tpldata['navlinks']) && isset($template->_tpldata['navlinks'][count($template->_tpldata['navlinks']) - 1]['U_VIEW_FORUM']))
 		{
 			$link = $template->_tpldata['navlinks'][count($template->_tpldata['navlinks']) - 1]['U_VIEW_FORUM'];
 		}
