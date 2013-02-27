@@ -527,6 +527,11 @@ class phpbb_mobile
 					// Detected desktop style
 					$link = self::create_link($template, 'mobile', 'switch_mobile');
 				}
+				elseif (defined('MOBILE_STYLE'))
+				{
+					// Detected mobile style
+					$link = self::create_link($template, 'desktop', 'switch_full');
+				}
 				break;
 		}
 		if (strlen($link))
