@@ -326,6 +326,7 @@ class phpbb_mobile
 			strpos($user_agent, 'Android') === false && // Android devices that don't have 'Mobile' in UA string.
 			stripos($user_agent, 'HTC_') === false &&	// HTC devices that don't have 'Mobile' nor 'Android' in UA string. Case insensitive.
 			strpos($user_agent, 'Fennec/') === false && 	// Firefox mobile
+			strpos($user_agent, 'Kindle') === false && 	// Kindle Fire tablet
 			strpos($user_agent, 'BlackBerry') === false) ||	// BlackBerry
 			strpos($user_agent, 'iPad') !== false)	// iPad should be excluded
 		{
