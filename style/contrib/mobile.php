@@ -28,7 +28,7 @@ class phpbb_mobile
      *
      * @var string|bool
      */
-    public static $mobile_style_path = false;
+    public static $mobile_style_path = '';
 
     /**
      * Mobile style ID, if style is installed.
@@ -63,11 +63,12 @@ class phpbb_mobile
     protected static $cookie_var = false;
     protected static $is_bot = false;
     protected static $is_desktop = false;
+    protected static $passed_mobile_path = false;
 
     /**
      * Start mobile style setup
      *
-     * @param bool|string $style_path Path to mobile style, saved to $mobile_style_path
+     * @param bool|string $style_path Path to mobile style, saved to $passed_mobile_path
      */
 	public static function setup($style_path = false)
 	{
@@ -82,7 +83,7 @@ class phpbb_mobile
 		{
 			if (is_string($style_path) && strlen($style_path))
 			{
-				self::$mobile_style_path = $style_path;
+				self::$passed_mobile_path = $style_path;
 			}
 			elseif (is_int($style_path) && $style_path > 0)
 			{
@@ -408,11 +409,12 @@ class phpbb_mobile
 	public static function locate_mobile_style($check_db = true, $check_dirs = true)
 	{
 		// Locate by style path
-		if (defined('MOBILE_STYLE_PATH'))
+		if (defined('MOBILE_STYLE_PATH') && self::check_style_path(MOBILE_STYLE_PATH))
 		{
 			self::$mobile_style_path = MOBILE_STYLE_PATH;
+			return self::$mobile_style_path;
 		}
-		if (self::$mobile_style_path !== false && self::check_style_path(self::$mobile_style_path))
+		if (!empty(self::$mobile_style_path) && self::check_style_path(self::$mobile_style_path))
 		{
 			return self::$mobile_style_path;
 		}
@@ -427,6 +429,13 @@ class phpbb_mobile
 		{
 			self::$mobile_style_path = $path;
 			return $path;
+		}
+
+		// Default style path, passed in session.php
+		if (!empty(self::$passed_mobile_path) && self::check_style_path(self::$passed_mobile_path))
+		{
+			self::$mobile_style_path = self::$passed_mobile_path;
+			return self::$mobile_style_path;
 		}
 
 		// Search styles directory
