@@ -403,6 +403,38 @@ ul.forums > li > p:first-child {
 }
 ul.forums strong { color: #888; font-weight: normal; }
 
+ul.forums > li.topic-1 a.topictitle {
+    padding-left: 18px;
+    position: relative;
+}
+ul.forums > li.topic-1 a.topictitle:before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    background: url(images/star.png) 0 50% no-repeat;
+}
+ul.forums > li.row-new.topic-1 a.topictitle:before {
+    background-position: -20px 50%;
+}
+
+@media all, (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 1.5dppx)
+{
+    ul.forums > li.topic-1 a.topictitle:before {
+        background-size: 40px 15px;
+        background-image: url(images/star_big.png);
+    }
+}
+@media (-o-min-device-pixel-ratio: 1)
+{
+    ul.forums > li.topic-1 a.topictitle:before {
+        background-image: url(images/star_big.png);
+    }
+}
+
 span.replies {
     display: inline-block;
     border: solid 0px transparent;
