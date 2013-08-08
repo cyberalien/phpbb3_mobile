@@ -145,11 +145,7 @@ ul.sub {
     padding: 2px;
     border: solid 2px #667d9b;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 #page-footer ul.sub {
     top: auto;
@@ -270,8 +266,6 @@ p.copy-right { float: right; }
     border: 1px solid #ccc;
     padding: 4px;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
 }
 div.copyright, #information { text-align: center; }
 .rules, .notice {
@@ -295,8 +289,6 @@ div.forums {
     padding: 4px 6px 6px;
     border: 0px solid #fff;
     border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
 }
 ul.forums, ul.forums > li {
     display: block;
@@ -308,8 +300,6 @@ ul.forums, ul.forums > li {
 ul.forums > li, .search .post-details {
     border: solid 1px #dde0e3;
     border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
     margin: 2px 0;
     position: relative;
 }
@@ -351,11 +341,7 @@ ul.forums > li.has-pagination {
 	margin-bottom: 0;
 	border-bottom-width: 0;
 	border-bottom-left-radius: 0;
-	-moz-border-radius-bottomleft: 0;
-	-webkit-border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
-	-moz-border-radius-bottomright: 0;
-	-webkit-border-bottom-right-radius: 0;
 }
 ul.forums > li.has-pagination > p:last-child {
 	margin-bottom: 0;
@@ -368,11 +354,7 @@ ul.forums > li.row-pagination {
 	padding: 2px 4px 4px;
 	border-top-width: 0;
 	border-top-left-radius: 0;
-	-moz-border-radius-topleft: 0;
-	-webkit-border-top-left-radius: 0;
 	border-top-right-radius: 0;
-	-moz-border-radius-topright: 0;
-	-webkit-border-top-right-radius: 0;
 }
 ul.forums > li.row-pagination:after { display: none; }
 
@@ -436,8 +418,6 @@ span.replies {
     border: solid 0px transparent;
     padding: 0 6px;
     border-radius: 8px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
     color: #fff;
     background-color: #7c91ac;
     text-shadow: rgba(0, 0, 0, 0.2) -1px -1px 1px;
@@ -457,8 +437,6 @@ span.replies.empty { background-color: #bec8d5; }
     margin-left: 4px;
     border: solid 0px transparent;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
 }
 .post-author.settings > a {
     display: inline-block;
@@ -518,8 +496,6 @@ blockquote, .codebox, .attachbox, .inline-attachment {
     margin: 4px 10px;
     border: solid 1px #ccc;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
     padding: 4px;
     color: #444;
     font-size: 11px;
@@ -559,8 +535,6 @@ ul.forums .pages a, ul.forums a.newest {
     background-color: #7c91ac;
     color: #fff !important;
     border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
 }
 ul.forums .pages a:hover { background-color: #63758b; }
 ul.forums a.newest, ul.forums span.pages a { 
@@ -584,8 +558,6 @@ div.buttons a, .button1, .button2 {
     padding: 4px 8px 4px;
     border: solid 0px transparent;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
 }
 div.buttons a { margin-bottom: 2px; }
 
@@ -656,8 +628,6 @@ fieldset.polls dd div {
     background-color: #7187a4;
     border: solid 0px transparent;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
     font-family: Arial;
     font-weight: bold;
     min-width: 14px;
@@ -688,8 +658,6 @@ table td, table th {
     padding: 3px;
     border: solid 1px #ccc;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
 }
 table th { 
     border-width: 0; 
@@ -707,8 +675,6 @@ table th {
     display: inline-block; 
     border: solid 0px transparent;
     border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
     padding: 0 6px;
 }
 .tabs-list > a {
@@ -739,8 +705,6 @@ dl.faq dd { margin: 2px 4px; }
 	padding: 3px 8px 4px;
 	border: 1px solid transparent;
 	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
 	text-decoration: none !important;
     background: #788aa3;
     color: #fff !important;
