@@ -4,17 +4,16 @@
 
 <form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
 
+	<!-- IF S_ERROR -->
+	<fieldset>
+		<p class="error">{ERROR_MSG}</p>
+	</fieldset>
+	<!-- ENDIF -->
+
 	<p>{L_GROUPS_EXPLAIN}</p>
 
 	<!-- IF S_EDIT -->
 		<h3>{L_GROUP_DETAILS}</h3>
-	
-		<!-- IF S_ERROR -->
-		<div class="rules">
-			<h2>{L_WARNING}</h2>
-			<p>{ERROR_MSG}</p>
-		</div>
-		<!-- ENDIF -->
 	
 		<fieldset class="fields1">
 		<dl>
@@ -49,7 +48,7 @@
 	<fieldset class="fields1">
 	<dl>
 		<dt><label for="group_colour">{L_GROUP_COLOR}:</label></dt>
-		<dd><input name="group_colour" type="text" id="group_colour" value="{GROUP_COLOUR}" size="7" maxlength="7" class="inputbox narrow" style="width: 50px" /> <span style="background-color: {GROUP_COLOUR};">&nbsp;&nbsp;&nbsp;</span></dd>
+		<dd><input name="group_colour" type="text" id="group_colour" value="{GROUP_COLOUR}" size="6" maxlength="6" class="inputbox narrow" style="width: 50px" /> <span style="background-color: {GROUP_COLOUR};">&nbsp;&nbsp;&nbsp;</span></dd>
 	</dl>
 	<p class="explain">{L_GROUP_COLOR_EXPLAIN}</p>
 	<dl>
