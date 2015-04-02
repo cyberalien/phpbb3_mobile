@@ -12,8 +12,6 @@
 		return;
 	}
 
-	alert('testing!!!');
-
 	function redirect(mode)
 	{
 		try {
